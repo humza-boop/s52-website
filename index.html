@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schema 52 — Intelligence. Strategy. Implementation.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#000;font-family:'Inter','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;color:#ECE7DF;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  img{display:block}
+  ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#0A0A0A}::-webkit-scrollbar-thumb{background:rgba(201,138,62,0.35)}
+  /* Mark trace */
+  #rp1,#rp2,#rp3{stroke-dasharray:1500 1500;stroke-dashoffset:1500;fill:none}
+  #rfill{opacity:0}
+  #rstroke{opacity:1}
+  @keyframes rtrace{from{stroke-dashoffset:1500}to{stroke-dashoffset:0}}
+  @keyframes rfi{from{opacity:0}to{opacity:1}}
+  @keyframes rfo{from{opacity:1}to{opacity:0}}
+  @keyframes rdrip{0%{transform:translateY(-110%)}100%{transform:translateY(210%)}}
+  /* Industry panels */
+  .riphoto{transition:transform 1.1s cubic-bezier(0.4,0,0.2,1)}
+  .rivignette{transition:opacity 0.65s ease}
+  .rilabel{transition:color 0.4s ease}
+  .ritagline{transition:opacity 0.5s ease,transform 0.5s cubic-bezier(0.16,1,0.3,1)}
+  /* Nav */
+  #rnav-cta:hover{border-color:rgba(201,138,62,0.7)!important;color:#C98A3E!important}
+  /* Form */
+  #rform input,#rform textarea{width:100%;background:rgba(10,10,10,0.03);border:1px solid rgba(10,10,10,0.22);color:#0A0A0A;font-family:'Inter','Helvetica Neue',sans-serif;font-size:14px;font-weight:300;padding:14px 16px;outline:none;transition:border-color 0.25s ease;-webkit-appearance:none}
+  #rform input::placeholder,#rform textarea::placeholder{color:rgba(10,10,10,0.32)}
+  #rform input:focus,#rform textarea:focus{border-color:rgba(201,138,62,0.55)}
+  #rsubmit{transition:background 0.25s ease,color 0.25s ease,border-color 0.25s ease}
+  #rsubmit:hover{background:#C98A3E!important;color:#0A0A0A!important;border-color:#C98A3E!important}
+  #rsubmit:disabled{opacity:0.6;cursor:default}
+  /* Word reveal */
+  .rword{display:inline-block;opacity:0;transform:translateY(12px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
+  .rword.in{opacity:1;transform:none}
+  /* Icon path draw */
+  .riconpath{stroke-dashoffset:120;transition:stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1)}
+  /* Responsive */
+  @media(max-width:960px){
+    .rmispad{padding:120px 40px 100px!important}
+    .rmish1{font-size:clamp(42px,6.5vw,72px)!important}
+    .rpropad{padding:100px 40px!important}
+    .rctapad{padding:100px 40px!important}
+    .rctah2{font-size:clamp(40px,5.5vw,60px)!important}
+  }
+  @media(max-width:768px){
+    #rnav{padding:14px 24px!important}
+    #rnavlogo{height:36px!important}
+    #rnav-cta{padding:9px 16px!important;font-size:9px!important}
+    .rmispad{padding:80px 28px 64px!important}
+    .rmish1{font-size:clamp(34px,8.5vw,52px)!important}
+    .rpropad{padding:64px 28px!important}
+    .rprostep{grid-template-columns:36px 1fr!important;gap:16px!important;padding:44px 0!important}
+    .rprostep h3{font-size:24px!important}
+    .rctapad{padding:72px 28px 60px!important}
+    .rctainner{flex-direction:column!important;gap:44px!important}
+    .rctaform{flex:none!important;width:100%!important}
+    .rctah2{font-size:clamp(32px,8vw,48px)!important}
+    #rformrow{grid-template-columns:1fr!important}
+    .ripanels{grid-template-columns:1fr!important;height:auto!important}
+    .ripanel{height:60vw!important;min-height:240px!important}
+    #rcredlogos{gap:16px 28px!important;flex-wrap:wrap!important;justify-content:flex-start!important}
+    .rfooterrow{padding:32px 28px!important;flex-direction:column!important;align-items:center!important;gap:14px!important;text-align:center!important}
+  }
+  @media(max-width:480px){
+    .rmish1{font-size:clamp(30px,8vw,44px)!important}
+    .rctah2{font-size:clamp(28px,8vw,40px)!important}
+    .rmispad{padding:72px 24px 56px!important}
+    .rpropad{padding:52px 24px!important}
+    .rctapad{padding:60px 24px 52px!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="rnav" style="position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 64px;display:flex;align-items:center;justify-content:space-between;transition:background 0.5s ease,border-bottom-color 0.5s ease;border-bottom:1px solid transparent">
+  <img id="rnavlogo" src="logos/schema52-A-dark.svg" alt="Schema 52" style="height:46px;width:auto;opacity:0;transition:opacity 0.7s ease">
+  <a id="rnav-cta" href="#rcta" style="font-size:10px;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;border:1px solid rgba(201,138,62,0.38);color:#ECE7DF;padding:11px 24px;opacity:0;transition:opacity 0.7s ease,border-color 0.25s ease,color 0.25s ease">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section style="background:#000;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative">
+  <svg viewBox="0 0 243 277" xmlns="http://www.w3.org/2000/svg" style="width:auto;height:min(22vh,175px);display:block;overflow:visible;position:relative;z-index:2">
+    <g id="rstroke" stroke="#ECE7DF" stroke-linejoin="round" stroke-width="2.2">
+      <path id="rp1" d="M92.6487 113.132L122.879 131.038L234.502 65.9425L163.219 23.8403L81.3986 71.6359L71.252 65.1808L151.298 17.6758L121.644 0L9.43741 64.8869L81.9047 106.914L163.219 59.5159L173.648 65.9425L92.6487 113.132Z"></path>
+      <path id="rp2" d="M112.602 180.928V145.514L0 80.1171V163.702C0 163.702 77.5055 174.174 81.4499 210.681C81.9746 215.537 81.4499 223.188 81.4499 223.188L0 175.392V211.99L112.539 276.674L112.602 192.598L31.5724 145.514V134.266L112.602 180.928Z"></path>
+      <path id="rp3" d="M129.602 180.928V145.514L242.205 80.1171V163.702L160.755 210.681V223.188L242.205 175.392V211.99L129.665 276.674L129.602 192.598L210.632 145.514C210.632 145.514 211.116 138.632 210.632 134.266C206.608 97.9724 129.602 180.928 129.602 180.928Z"></path>
+    </g>
+    <g id="rfill">
+      <path d="M92.6487 113.132L122.879 131.038L234.502 65.9425L163.219 23.8403L81.3986 71.6359L71.252 65.1808L151.298 17.6758L121.644 0L9.43741 64.8869L81.9047 106.914L163.219 59.5159L173.648 65.9425L92.6487 113.132Z" fill="#ECE7DF"></path>
+      <path d="M112.602 180.928V145.514L0 80.1171V163.702C0 163.702 77.5055 174.174 81.4499 210.681C81.9746 215.537 81.4499 223.188 81.4499 223.188L0 175.392V211.99L112.539 276.674L112.602 192.598L31.5724 145.514V134.266L112.602 180.928Z" fill="#ECE7DF"></path>
+      <path d="M129.602 180.928V145.514L242.205 80.1171V163.702L160.755 210.681V223.188L242.205 175.392V211.99L129.665 276.674L129.602 192.598L210.632 145.514C210.632 145.514 211.116 138.632 210.632 134.266C206.608 97.9724 129.602 180.928 129.602 180.928Z" fill="#ECE7DF"></path>
+    </g>
+  </svg>
+  <!-- Warm bleed, injected by JS after mark resolves -->
+  <div id="rbleed" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 58%,rgba(201,138,62,0.065) 0%,transparent 62%);opacity:0;transition:opacity 3.2s ease;pointer-events:none;z-index:1"></div>
+  <!-- Scroll hint -->
+  <div id="rscrollhint" style="position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transition:opacity 0.6s ease;pointer-events:none;z-index:2">
+    <span style="font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(236,231,223,0.22)">Scroll</span>
+    <div style="position:relative;width:1px;height:44px;background:rgba(236,231,223,0.08);overflow:hidden">
+      <div id="rdrip" style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(201,138,62,0.6),transparent);transform:translateY(-110%)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section style="background:#F3F2EF">
+  <div class="rmispad" style="padding:160px 64px 140px">
+
+    <h1 class="rmish1" style="font-size:clamp(52px,7.2vw,96px);font-weight:300;line-height:1.07;letter-spacing:-0.026em;color:#0A0A0A;text-wrap:pretty">The AI advantage isn't reserved<br>for Silicon Valley.</h1>
+    <p style="font-size:clamp(18px,1.85vw,26px);font-weight:300;line-height:1.75;color:rgba(10,10,10,0.52);text-wrap:pretty;max-width:100%;margin-top:40px">S52 helps professional services firms redesign operations with AI so their people can spend more time doing the work only they can do.</p>
+
+    <!-- Credentials: full-width -->
+    <div style="margin-top:52px;border-top:1px solid rgba(10,10,10,0.1);padding-top:36px">
+      <p style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(10,10,10,0.24);margin-bottom:40px">Built by leaders from</p>
+      <div id="rcredlogos" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+        <img src="logos/techstars.png" alt="Techstars" style="height:22px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
+        <img src="logos/shell.png" alt="Shell" style="height:28px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
+        <img src="logos/accenture.png" alt="Accenture" style="height:20px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
+        <img src="logos/bain.png" alt="Bain" style="height:16px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
+        <img src="logos/gartner.png" alt="Gartner" style="height:16px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
+        <img src="logos/heb.webp" alt="HEB" style="height:28px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
+        <img src="logos/amc.png" alt="AMC" style="height:18px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INDUSTRIES: full viewport width, no container -->
+<section style="background:#0A0A0A">
+  <div class="ripanels" style="display:grid;grid-template-columns:1fr 1fr 1fr;height:min(80vh,740px)">
+
+    <!-- Tax & Accounting -->
+    <div class="ripanel" style="position:relative;overflow:hidden;cursor:default">
+      <div class="riphoto" style="position:absolute;inset:-6%;background-image:url('images/image_tax.png');background-size:cover;background-position:4% center;filter:brightness(0.72) saturate(0.7)"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.64) 0%,transparent 48%);pointer-events:none"></div>
+      <div class="rivignette" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.28) 52%,transparent 72%);opacity:0;pointer-events:none"></div>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px">
+        <p class="ritagline" style="font-size:13px;font-weight:300;color:rgba(236,231,223,0.88);line-height:1.6;margin-bottom:14px;opacity:0;transform:translateY(8px);text-wrap:pretty">Returns aren't the problem.<br>Getting clients to provide the right information is.</p>
+        <p class="rilabel" style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(236,231,223,0.42)">Tax &amp; Accounting</p>
+      </div>
+    </div>
+
+    <!-- Legal -->
+    <div class="ripanel" style="position:relative;overflow:hidden;cursor:default;border-left:1px solid rgba(0,0,0,0.5)">
+      <div class="riphoto" style="position:absolute;inset:-6%;background-image:url('images/image_legal.png');background-size:cover;background-position:72% 20%;filter:brightness(0.70) saturate(0.7)"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.64) 0%,transparent 48%);pointer-events:none"></div>
+      <div class="rivignette" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.28) 52%,transparent 72%);opacity:0;pointer-events:none"></div>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px">
+        <p class="ritagline" style="font-size:13px;font-weight:300;color:rgba(236,231,223,0.88);line-height:1.6;margin-bottom:14px;opacity:0;transform:translateY(8px);text-wrap:pretty">The most expensive work in a law firm<br>often isn't legal work.</p>
+        <p class="rilabel" style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(236,231,223,0.42)">Legal</p>
+      </div>
+    </div>
+
+    <!-- Financial Services -->
+    <div class="ripanel" style="position:relative;overflow:hidden;cursor:default;border-left:1px solid rgba(0,0,0,0.5)">
+      <div class="riphoto" style="position:absolute;inset:-6%;background-image:url('images/image_finance.png');background-size:cover;background-position:center 35%;filter:brightness(0.72) saturate(0.7)"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.64) 0%,transparent 48%);pointer-events:none"></div>
+      <div class="rivignette" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.28) 52%,transparent 72%);opacity:0;pointer-events:none"></div>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px">
+        <p class="ritagline" style="font-size:13px;font-weight:300;color:rgba(236,231,223,0.88);line-height:1.6;margin-bottom:14px;opacity:0;transform:translateY(8px);text-wrap:pretty">Growth shouldn't require<br>proportional headcount.</p>
+        <p class="rilabel" style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(236,231,223,0.42)">Financial Services</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW WE WORK: editorial -->
+<section style="background:#0A0A0A">
+  <div class="rpropad" style="max-width:960px;margin:0 auto;padding:148px 64px">
+
+    <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding-bottom:72px">
+      <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">01</p>
+      <div>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><ellipse class="riconpath" cx="12" cy="12" rx="10" ry="6" style="stroke-dasharray:120;stroke-dashoffset:120"></ellipse><circle class="riconpath" cx="12" cy="12" r="3" style="stroke-dasharray:120;stroke-dashoffset:120"></circle></svg>
+        <h3 style="font-size:30px;font-weight:300;color:#ECE7DF;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Understand the operation.</h3>
+        <p style="font-size:15px;font-weight:300;line-height:1.84;color:rgba(236,231,223,0.62);text-wrap:pretty">We begin by mapping how the business actually creates value — not the org chart, but where the real work happens and where it stalls. We establish measurable financial benchmarks at the outset so both sides know exactly what success looks like.</p>
+      </div>
+    </div>
+
+    <div style="height:1px;background:rgba(236,231,223,0.07)"></div>
+
+    <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding:72px 0">
+      <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">02</p>
+      <div>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><circle class="riconpath" cx="12" cy="12" r="8" style="stroke-dasharray:120;stroke-dashoffset:120"></circle><circle class="riconpath" cx="12" cy="12" r="2" style="stroke-dasharray:120;stroke-dashoffset:120"></circle><line class="riconpath" x1="12" y1="2" x2="12" y2="7" style="stroke-dasharray:120;stroke-dashoffset:120"></line><line class="riconpath" x1="12" y1="17" x2="12" y2="22" style="stroke-dasharray:120;stroke-dashoffset:120"></line><line class="riconpath" x1="2" y1="12" x2="7" y2="12" style="stroke-dasharray:120;stroke-dashoffset:120"></line><line class="riconpath" x1="17" y1="12" x2="22" y2="12" style="stroke-dasharray:120;stroke-dashoffset:120"></line></svg>
+        <h3 style="font-size:30px;font-weight:300;color:#ECE7DF;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Find the leverage.</h3>
+        <p style="font-size:15px;font-weight:300;line-height:1.84;color:rgba(236,231,223,0.62);text-wrap:pretty">Most operations have one or two root causes driving the majority of friction. Finding those first is what lets us move with precision — and it's why clients often see meaningful results within days, not months.</p>
+      </div>
+    </div>
+
+    <div style="height:1px;background:rgba(236,231,223,0.07)"></div>
+
+    <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding:72px 0">
+      <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">03</p>
+      <div>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><rect class="riconpath" x="2" y="8" width="13" height="8" rx="1" style="stroke-dasharray:120;stroke-dashoffset:120"></rect><line class="riconpath" x1="15" y1="12" x2="22" y2="12" style="stroke-dasharray:120;stroke-dashoffset:120"></line><polyline class="riconpath" points="19,9 22,12 19,15" style="stroke-dasharray:120;stroke-dashoffset:120"></polyline></svg>
+        <h3 style="font-size:30px;font-weight:300;color:#ECE7DF;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Build it to last.</h3>
+        <p style="font-size:15px;font-weight:300;line-height:1.84;color:rgba(236,231,223,0.62);text-wrap:pretty">The right solution is one your team owns forever. Not a subscription you'll outgrow and not a dependency on consultants. We build once, transfer completely, and make sure what we deploy keeps working long after we're done.</p>
+      </div>
+    </div>
+
+    <div style="height:1px;background:rgba(236,231,223,0.07)"></div>
+
+    <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding-top:72px">
+      <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">04</p>
+      <div>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><path class="riconpath" d="M8,4 A8,8 0 1,0 20,12" style="stroke-dasharray:120;stroke-dashoffset:120"></path><polyline class="riconpath" points="16,8 20,12 16,16" style="stroke-dasharray:120;stroke-dashoffset:120"></polyline></svg>
+        <h3 style="font-size:30px;font-weight:300;color:#ECE7DF;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Stay in it with you.</h3>
+        <p style="font-size:15px;font-weight:300;line-height:1.84;color:rgba(236,231,223,0.62);text-wrap:pretty">We don't deliver and disappear. We track outcomes against the benchmarks we set together, refine as we learn, and stay close to the work as the business evolves. That's what separates a long-term partner from a one-time vendor.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="rcta" style="background:#F3F2EF;border-top:1px solid rgba(10,10,10,0.07)">
+  <div class="rctapad" style="max-width:1280px;margin:0 auto;padding:140px 64px 120px">
+    <div class="rctainner" style="display:flex;justify-content:space-between;align-items:flex-start;gap:80px;flex-wrap:wrap">
+
+      <div style="flex:1;min-width:280px">
+        <h2 class="rctah2" style="font-size:clamp(44px,5.2vw,72px);font-weight:300;line-height:1.07;letter-spacing:-0.022em;color:#0A0A0A;text-wrap:pretty">Operational excellence starts with a conversation.</h2>
+      </div>
+
+      <div class="rctaform" style="flex:0 0 420px;min-width:280px;padding-top:6px">
+        <form id="rform" style="display:flex;flex-direction:column;gap:10px">
+          <div id="rformrow" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <input type="text" name="name" placeholder="Name" autocomplete="name" required>
+            <input type="email" name="email" placeholder="Work email" autocomplete="email" required>
+          </div>
+          <input type="text" name="company" placeholder="Company" autocomplete="organization">
+          <textarea name="message" placeholder="How can we help?" rows="3" style="width:100%;background:rgba(10,10,10,0.03);border:1px solid rgba(10,10,10,0.22);color:#0A0A0A;font-family:'Inter','Helvetica Neue',sans-serif;font-size:14px;font-weight:300;padding:14px 16px;outline:none;transition:border-color 0.25s ease;resize:none;-webkit-appearance:none"></textarea>
+          <button id="rsubmit" type="submit" style="display:flex;align-items:center;justify-content:center;gap:12px;background:transparent;color:#0A0A0A;border:1px solid rgba(201,138,62,0.68);font-size:10px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;padding:16px 32px;cursor:pointer;font-family:'Inter','Helvetica Neue',sans-serif;margin-top:4px"><span id="rsubmit-label">Book a Call</span> <span id="rsubmit-arrow" style="font-size:13px">→</span></button>
+          <p id="rform-status" style="font-size:12px;font-weight:300;color:rgba(10,10,10,0.6);min-height:16px"></p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#F3F2EF;border-top:1px solid rgba(10,10,10,0.13)">
+  <div class="rfooterrow" style="max-width:1280px;margin:0 auto;padding:40px 64px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
+    <img src="logos/schema52-A-light.svg" alt="Schema 52" style="height:36px;width:auto;opacity:0.58;flex-shrink:0">
+    <p style="font-size:9px;font-weight:300;color:rgba(10,10,10,0.34);letter-spacing:0.24em;text-transform:uppercase;text-align:center;flex:1">For those who adapt</p>
+    <p style="font-size:10px;font-weight:300;color:rgba(10,10,10,0.48);letter-spacing:0.05em;white-space:nowrap;flex-shrink:0">© 2026 SCHEMA 52</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const E = id => document.getElementById(id);
+  const Q = s  => document.querySelectorAll(s);
+  const ease = 'cubic-bezier(0.16,1,0.3,1)';
+
+  // ── MARK ANIMATION ────────────────────────────────────────────────────────
+  if (!E('ranim')) {
+    const s = document.createElement('style');
+    s.id = 'ranim';
+    s.textContent = [
+      '#rp1{animation:rtrace 3.0s cubic-bezier(0.4,0,0.2,1) 0.3s forwards}',
+      '#rp2{animation:rtrace 3.4s cubic-bezier(0.4,0,0.2,1) 0.9s forwards}',
+      '#rp3{animation:rtrace 3.4s cubic-bezier(0.4,0,0.2,1) 0.9s forwards}',
+      '#rfill{animation:rfi 1.8s ease 3.4s forwards}',
+      '#rstroke{animation:rfo 1.8s ease 3.4s forwards}',
+      '#rscrollhint{animation:rfi 1.0s ease 6.5s forwards}',
+      '#rdrip{animation:rdrip 2.0s ease-in-out 7.5s infinite}',
+    ].join('');
+    document.head.appendChild(s);
+  }
+  setTimeout(() => { const b = E('rbleed'); if (b) b.style.opacity = '1'; }, 3600);
+
+  // ── WORD SPLIT HELPER ─────────────────────────────────────────────────────
+  const splitWords = el => {
+    if (!el) return;
+    const raw = el.innerHTML.replace(/<br\s*\/?>/gi, ' __BR__ ');
+    el.innerHTML = raw.split(/\s+/).map((w, i) => {
+      if (w === '__BR__') return '<br>';
+      return `<span class="rword" style="transition-delay:${i * 0.055}s">${w}</span>`;
+    }).join(' ');
+  };
+
+  // ── MISSION WORD REVEAL ───────────────────────────────────────────────────
+  const misSec = document.querySelector('section[style*="background:#F3F2EF"]');
+  const misH1  = misSec ? misSec.querySelector('h1.rmish1') : null;
+  const misP   = misSec ? misSec.querySelector('p.rmish1')  : null;
+  splitWords(misH1);
+  splitWords(misP);
+
+  if (misSec) {
+    const mObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const h1Words = misH1 ? [...misH1.querySelectorAll('.rword')] : [];
+        const pWords  = misP  ? [...misP.querySelectorAll('.rword')]  : [];
+        h1Words.forEach((w, i) => setTimeout(() => w.classList.add('in'), i * 58));
+        const pDelay = h1Words.length * 52 + 160;
+        pWords.forEach((w, i)  => setTimeout(() => w.classList.add('in'), pDelay + i * 52));
+        mObs.unobserve(e.target);
+      });
+    }, { threshold: 0.05 });
+    mObs.observe(misSec);
+  }
+
+  // ── CTA HEADLINE WORD REVEAL ──────────────────────────────────────────────
+  const ctaH2 = document.querySelector('#rcta h2');
+  if (ctaH2) {
+    splitWords(ctaH2);
+    const cObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        [...e.target.querySelectorAll('.rword')].forEach((w, i) =>
+          setTimeout(() => w.classList.add('in'), i * 60)
+        );
+        cObs.unobserve(e.target);
+      });
+    }, { threshold: 0.1 });
+    cObs.observe(ctaH2);
+  }
+
+  // ── PROCESS STEPS: STAGGER + ICON STROKE-DRAW ────────────────────────────
+  Q('.rprostep').forEach((step, idx) => {
+    step.style.opacity   = '0';
+    step.style.transform = 'translateY(20px)';
+    step.style.transition = `opacity 0.9s ${ease}, transform 0.9s ${ease}`;
+
+    const iconPaths = [...step.querySelectorAll('.riconpath')];
+
+    const sObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        step.style.opacity   = '1';
+        step.style.transform = 'none';
+        iconPaths.forEach((path, pi) => {
+          setTimeout(() => { path.style.strokeDashoffset = '0'; }, 400 + pi * 160);
+        });
+        sObs.unobserve(e.target);
+      });
+    }, { threshold: 0.18 });
+    sObs.observe(step);
+  });
+
+  // ── INDUSTRY HOVER + PARALLAX ─────────────────────────────────────────────
+  const indPanels = [];
+  Q('.ripanel').forEach(panel => {
+    const photo    = panel.querySelector('.riphoto');
+    const vignette = panel.querySelector('.rivignette');
+    const tagline  = panel.querySelector('.ritagline');
+    const label    = panel.querySelector('.rilabel');
+    const state    = { hovered: false, py: 0 };
+    indPanels.push({ panel, photo, state });
+
+    const applyT = () => {
+      if (photo) photo.style.transform = `translateY(${state.py}px) scale(${state.hovered ? 1.03 : 1.0})`;
+    };
+    panel.addEventListener('mouseenter', () => {
+      state.hovered = true; applyT();
+      if (vignette) vignette.style.opacity = '1';
+      if (tagline)  { tagline.style.opacity = '1'; tagline.style.transform = 'translateY(0)'; }
+      if (label)    label.style.color = 'rgba(236,231,223,0.88)';
+    });
+    panel.addEventListener('mouseleave', () => {
+      state.hovered = false; applyT();
+      if (vignette) vignette.style.opacity = '0';
+      if (tagline)  { tagline.style.opacity = '0'; tagline.style.transform = 'translateY(8px)'; }
+      if (label)    label.style.color = 'rgba(236,231,223,0.42)';
+    });
+  });
+
+  // ── SCROLL ────────────────────────────────────────────────────────────────
+  window.addEventListener('scroll', () => {
+    const y      = window.scrollY;
+    const nav    = E('rnav');
+    const logo   = E('rnavlogo');
+    const navCta = E('rnav-cta');
+    const hint   = E('rscrollhint');
+
+    if (y > 60) {
+      nav.style.background        = 'rgba(0,0,0,0.96)';
+      nav.style.backdropFilter    = 'blur(14px)';
+      nav.style.borderBottomColor = 'rgba(236,231,223,0.05)';
+      if (logo)   logo.style.opacity   = '1';
+      if (navCta) navCta.style.opacity = '1';
+    } else {
+      nav.style.background        = 'transparent';
+      nav.style.backdropFilter    = 'none';
+      nav.style.borderBottomColor = 'transparent';
+      if (logo)   logo.style.opacity   = '0';
+      if (navCta) navCta.style.opacity = '0';
+    }
+    if (hint) hint.style.opacity = y > 60 ? '0' : null;
+
+    indPanels.forEach(({ panel, photo, state }) => {
+      const rect = panel.getBoundingClientRect();
+      state.py = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.028;
+      if (photo) photo.style.transform = `translateY(${state.py}px) scale(${state.hovered ? 1.03 : 1.0})`;
+    });
+  }, { passive: true });
+
+  // ── FORM FOCUS LINE ───────────────────────────────────────────────────────
+  Q('#rform input, #rform textarea').forEach(field => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'position:relative';
+    field.parentNode.insertBefore(wrap, field);
+    wrap.appendChild(field);
+    const line = document.createElement('div');
+    line.style.cssText = 'position:absolute;bottom:0;left:0;height:1px;width:0;background:#C98A3E;opacity:0.55;transition:width 0.3s cubic-bezier(0,0,0.2,1);pointer-events:none';
+    wrap.appendChild(line);
+    field.addEventListener('focus', () => { line.style.width = '100%'; });
+    field.addEventListener('blur',  () => { line.style.width = '0'; });
+  });
+
+  // ── FORM SUBMIT ───────────────────────────────────────────────────────────
+  const form   = E('rform');
+  const status = E('rform-status');
+  const submit = E('rsubmit');
+  const label  = E('rsubmit-label');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        company: form.company.value.trim(),
+        message: form.message.value.trim(),
+      };
+      if (!data.name || !data.email) {
+        status.textContent = 'Please fill in your name and email.';
+        return;
+      }
+      submit.disabled = true;
+      label.textContent = 'Sending…';
+      status.textContent = '';
+      try {
+        const res = await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error('Request failed');
+        label.textContent = 'Sent';
+        status.textContent = "Thanks — we'll be in touch shortly.";
+        form.reset();
+        Q('#rform input, #rform textarea').forEach(f => f.blur());
+      } catch (err) {
+        submit.disabled = false;
+        label.textContent = 'Book a Call';
+        status.textContent = 'Something went wrong. Please try again or email us directly.';
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>
