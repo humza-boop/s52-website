@@ -3,10 +3,8 @@
 ## Overview
 This is the high-fidelity homepage design for Schema 52 — an AI operations consultancy serving professional services firms (tax, legal, financial services). The design is editorial, minimal, and cinematic in character. The goal was to move away from a "slide deck" aesthetic toward a confident, typographically-led site that feels like a premium annual report.
 
-## About the Design Files
-The files in this bundle are **design references created in HTML** — high-fidelity prototypes showing intended look, layout, copy, and behavior. They are not production code to copy directly. The task is to **recreate these designs in your target codebase** (React, Next.js, or equivalent) using its established patterns, routing, and component conventions.
-
-The HTML prototype is fully functional and can be opened in a browser for reference. Open `S52 Homepage - Refined.dc.html` directly in Chrome or Safari. Note: `support.js` is a runtime dependency of the prototyping environment — you will not need it in production.
+## About This Repo
+`index.html` is the production site — a single static HTML file with inline CSS and vanilla JS, deployed as-is on Vercel. There is no build step. The original design prototypes used during handoff (`.dc.html` files, `support.js`) have been removed now that the design is implemented in `index.html`.
 
 ## Fidelity
 **High-fidelity.** Colors, typography, spacing, interactions, animations, and copy are all final and should be implemented pixel-accurately.
@@ -236,4 +234,18 @@ All credential logos should be rendered with `filter: brightness(0)` (on light b
 
 6. **Remove the "← Previous" exploration nav button** in the bottom-right corner — this is a prototype navigation aid only.
 
-7. **Form submission**: The form currently has `onsubmit="return false"`. Wire to your backend or a service like Calendly, HubSpot, or a direct email handler.
+7. **Form submission**: see [Contact Form Setup](#contact-form-setup) below.
+
+---
+
+## Contact Form Setup
+
+The contact form (`#rform` in `index.html`) submits to a Google Apps Script Web App, which appends each submission to a Google Sheet and emails `humza@schema52.com` and `kim@schema52.com`. No paid services, API keys, or environment variables are required.
+
+1. Create a new Google Sheet. Add a tab named `Submissions` (or let the script create it automatically on first run).
+2. In the Sheet, go to **Extensions → Apps Script**, delete the default boilerplate, and paste in the contents of [`google-apps-script/Code.gs`](google-apps-script/Code.gs).
+3. Click **Deploy → New deployment**, choose type **Web app**, set **Execute as: Me** and **Who has access: Anyone**, then deploy.
+4. Copy the resulting `/exec` URL and paste it into the `FORM_ENDPOINT` constant near the bottom of `index.html` (inside the `FORM SUBMIT` script section).
+5. Submit a test entry through the live site to confirm a row appears in the Sheet and both recipients receive the email notification.
+
+If the recipient list or sheet name ever needs to change, edit the `NOTIFY_TO` / `SHEET_NAME` constants at the top of `Code.gs` and redeploy (**Deploy → Manage deployments → Edit → New version**).

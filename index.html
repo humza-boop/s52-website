@@ -426,6 +426,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── FORM SUBMIT ───────────────────────────────────────────────────────────
+  // Google Apps Script Web App URL — see google-apps-script/Code.gs for setup.
+  const FORM_ENDPOINT = 'https://script.google.com/macros/s/REPLACE_WITH_DEPLOYMENT_ID/exec';
+
   const form   = E('rform');
   const status = E('rform-status');
   const submit = E('rsubmit');
@@ -448,12 +451,14 @@ document.addEventListener('DOMContentLoaded', () => {
       label.textContent = 'Sending…';
       status.textContent = '';
       try {
-        const res = await fetch('/api/submit', {
+        // Content-Type text/plain avoids a CORS preflight, which Apps Script doesn't handle.
+        const res = await fetch(FORM_ENDPOINT, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(data),
         });
-        if (!res.ok) throw new Error('Request failed');
+        const result = await res.json();
+        if (!res.ok || result.error) throw new Error(result.error || 'Request failed');
         label.textContent = 'Sent';
         status.textContent = "Thanks — we'll be in touch shortly.";
         form.reset();
