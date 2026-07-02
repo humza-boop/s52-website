@@ -88,7 +88,7 @@
 <!-- NAV -->
 <nav id="rnav" style="position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 64px;display:flex;align-items:center;justify-content:space-between;transition:background 0.5s ease,border-bottom-color 0.5s ease;border-bottom:1px solid transparent">
   <img id="rnavlogo" src="logos/schema52-A-dark.svg" alt="Schema 52" style="height:46px;width:auto;opacity:0;transition:opacity 0.7s ease">
-  <a id="rnav-cta" href="#rcta" style="font-size:10px;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;border:1px solid rgba(201,138,62,0.38);color:#ECE7DF;padding:11px 24px;opacity:0;transition:opacity 0.7s ease,border-color 0.25s ease,color 0.25s ease">Book a Call</a>
+  <a id="rnav-cta" href="#rcta" style="font-size:10px;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;border:1px solid rgba(201,138,62,0.38);color:#ECE7DF;padding:11px 24px;opacity:0;transition:opacity 0.7s ease,border-color 0.25s ease,color 0.25s ease">Book a Demo</a>
 </nav>
 
 <!-- HERO -->
@@ -231,22 +231,24 @@
 
 <!-- CTA -->
 <section id="rcta" style="background:#F3F2EF;border-top:1px solid rgba(10,10,10,0.07)">
-  <div class="rctapad" style="max-width:1280px;margin:0 auto;padding:140px 64px 120px">
-    <div class="rctainner" style="display:flex;justify-content:space-between;align-items:flex-start;gap:80px;flex-wrap:wrap">
+  <div class="rctapad" style="max-width:1280px;margin:0 auto;padding:160px 64px 140px">
+    <div class="rctainner" style="display:flex;align-items:flex-start;gap:100px;flex-wrap:wrap">
 
-      <div style="flex:1;min-width:280px">
-        <h2 class="rctah2" style="font-size:clamp(44px,5.2vw,72px);font-weight:300;line-height:1.07;letter-spacing:-0.022em;color:#0A0A0A;text-wrap:pretty">Your people aren't the bottleneck. The work around them is.</h2>
+      <div style="flex:1;min-width:280px;max-width:640px">
+        <h2 class="rctah2" style="font-size:clamp(38px,4.4vw,60px);font-weight:300;line-height:1.14;letter-spacing:-0.022em;color:#0A0A0A;text-wrap:pretty">Great firms aren't held back by expertise or people.<br><br>They're held back by operations.</h2>
       </div>
 
-      <div class="rctaform" style="flex:0 0 420px;min-width:280px;padding-top:6px">
-        <form id="rform" style="display:flex;flex-direction:column;gap:10px">
-          <div id="rformrow" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="rctaform" style="flex:0 0 420px;min-width:280px;padding-top:10px">
+        <p style="font-size:10px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:#C98A3E;margin-bottom:14px">See Our Work In Action</p>
+        <p style="font-size:15px;font-weight:300;line-height:1.65;color:rgba(10,10,10,0.58);margin-bottom:28px;text-wrap:pretty">From intake to follow-ups and beyond, we'll show you where automation can take work off your team's plate.</p>
+        <form id="rform" style="display:flex;flex-direction:column;gap:8px">
+          <div id="rformrow" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
             <input type="text" name="name" placeholder="Name" autocomplete="name" required>
             <input type="email" name="email" placeholder="Work email" autocomplete="email" required>
           </div>
           <input type="text" name="company" placeholder="Company" autocomplete="organization">
           <textarea name="message" placeholder="How can we help?" rows="3" style="width:100%;background:rgba(10,10,10,0.03);border:1px solid rgba(10,10,10,0.22);color:#0A0A0A;font-family:'Inter','Helvetica Neue',sans-serif;font-size:14px;font-weight:300;padding:14px 16px;outline:none;transition:border-color 0.25s ease;resize:none;-webkit-appearance:none"></textarea>
-          <button id="rsubmit" type="submit" style="display:flex;align-items:center;justify-content:center;gap:12px;background:transparent;color:#0A0A0A;border:1px solid rgba(201,138,62,0.68);font-size:10px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;padding:16px 32px;cursor:pointer;font-family:'Inter','Helvetica Neue',sans-serif;margin-top:4px"><span id="rsubmit-label">Book a Call</span> <span id="rsubmit-arrow" style="font-size:13px">→</span></button>
+          <button id="rsubmit" type="submit" style="display:flex;align-items:center;justify-content:center;gap:12px;background:transparent;color:#0A0A0A;border:1px solid rgba(201,138,62,0.68);font-size:10px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;padding:16px 32px;cursor:pointer;font-family:'Inter','Helvetica Neue',sans-serif;margin-top:6px"><span id="rsubmit-label">Book a Demo</span> <span id="rsubmit-arrow" style="font-size:13px">→</span></button>
           <p id="rform-status" style="font-size:12px;font-weight:300;color:rgba(10,10,10,0.6);min-height:16px"></p>
         </form>
       </div>
@@ -467,7 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Q('#rform input, #rform textarea').forEach(f => f.blur());
       } catch (err) {
         submit.disabled = false;
-        label.textContent = 'Book a Call';
+        label.textContent = 'Book a Demo';
         status.textContent = 'Something went wrong. Please try again or email us directly.';
       }
     });
