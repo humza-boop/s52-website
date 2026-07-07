@@ -65,9 +65,8 @@
     .rprostep{grid-template-columns:30px 1fr!important;gap:16px!important;padding:28px 0!important}
     .rprostep h3{font-size:21px!important}
     .rprostep p{font-size:14.5px!important;line-height:1.68!important}
-    .rbeliefgrid{grid-template-columns:1fr!important;gap:14px!important}
-    .rbeliefgrid>p{padding-top:0!important}
-    .rbeliefh2{font-size:18px!important;line-height:1.5!important}
+    .rbelieflead{font-size:clamp(24px,6vw,32px)!important}
+    .rbeliefbody{font-size:16px!important;line-height:1.5!important}
     .rctapad{padding:48px 26px 44px!important}
     .rctainner{flex-direction:column!important;gap:30px!important}
     .rctaform{flex:none!important;width:100%!important}
@@ -88,7 +87,8 @@
     .rctah2{font-size:clamp(25px,6.8vw,34px)!important}
     .rlead{font-size:15px!important}
     .rprostep h3{font-size:20px!important}
-    .rbeliefh2{font-size:17px!important}
+    .rbelieflead{font-size:22px!important}
+    .rbeliefbody{font-size:15px!important}
     .rmispad{padding:44px 22px 38px!important}
     .rpropad{padding:40px 22px!important}
     .rctapad{padding:42px 22px 42px!important}
@@ -194,10 +194,10 @@
 
 <!-- WHAT WE BELIEVE -->
 <section style="background:#F3F2EF;box-shadow:inset 0 34px 46px -34px rgba(0,0,0,0.42)">
-  <div class="rpropad" style="max-width:1200px;margin:0 auto;padding:112px 64px">
-    <div class="rbeliefgrid rreveal" style="display:grid;grid-template-columns:220px 1fr;gap:72px;align-items:start">
-      <p style="font-size:11px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:#C98A3E;padding-top:18px">What we believe</p>
-      <h2 class="rbeliefh2" style="font-size:clamp(26px,2.8vw,40px);font-weight:300;line-height:1.34;letter-spacing:-0.015em;color:#0A0A0A;text-wrap:pretty">Great people can only move as fast as the systems around them. For too long, professional services firms have accepted manual coordination as the cost of serving clients. We don't. S52 exists to eliminate that coordination burden, so firms can grow by improving their systems, not by adding more administrative work.</h2>
+  <div class="rpropad" style="max-width:820px;margin:0 auto;padding:112px 64px;text-align:center">
+    <div class="rreveal">
+      <p class="rbelieflead" style="font-size:clamp(30px,3.6vw,48px);font-weight:300;line-height:1.2;letter-spacing:-0.02em;color:#0A0A0A;text-wrap:pretty">Great people can only move as fast as the systems around them.</p>
+      <p class="rbeliefbody" style="font-size:clamp(18px,1.7vw,24px);font-weight:300;line-height:1.55;color:rgba(10,10,10,0.5);text-wrap:pretty;margin-top:32px">For too long, professional services firms have accepted manual coordination as the cost of serving clients. <span style="color:#C98A3E;font-weight:400">We don't.</span> S52 exists to eliminate that coordination burden, so firms can grow by improving their systems, not by adding more administrative work.</p>
     </div>
   </div>
 </section>
@@ -281,7 +281,7 @@
 <!-- FOOTER -->
 <footer style="background:#F3F2EF">
   <div style="max-width:1280px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(10,10,10,0.10),transparent)"></div>
-  <div class="rfooterrow rreveal" style="max-width:1280px;margin:0 auto;padding:32px 64px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
+  <div class="rfooterrow rreveal" style="max-width:1280px;margin:0 auto;padding:44px 64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;flex-wrap:wrap">
     <img src="logos/schema52-A-light.svg" alt="Schema 52" style="height:32px;width:auto;opacity:0.58;flex-shrink:0">
     <p style="font-size:10px;font-weight:300;color:rgba(10,10,10,0.48);letter-spacing:0.05em;white-space:nowrap;flex-shrink:0">© 2026 SCHEMA 52</p>
   </div>
