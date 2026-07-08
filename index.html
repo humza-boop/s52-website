@@ -33,10 +33,12 @@
   .rilabel{transition:color 0.4s ease}
   .ritagline{transition:opacity 0.5s ease,transform 0.5s cubic-bezier(0.16,1,0.3,1)}
   /* Nav */
-  #rnav-cta:hover{border-color:rgba(201,138,62,0.7)!important;color:#C98A3E!important}
+  #rnav-cta:hover{background:#C98A3E!important;border-color:#C98A3E!important;color:#0A0A0A!important}
+  /* Hero CTA */
+  #rherocta:hover{background:#C98A3E!important;border-color:#C98A3E!important;color:#0A0A0A!important}
   /* Form */
-  #rform input,#rform textarea{width:100%;background:rgba(10,10,10,0.03);border:1px solid rgba(10,10,10,0.22);color:#0A0A0A;font-family:'Inter','Helvetica Neue',sans-serif;font-size:14px;font-weight:300;padding:14px 16px;outline:none;transition:border-color 0.25s ease;-webkit-appearance:none}
-  #rform input::placeholder,#rform textarea::placeholder{color:rgba(10,10,10,0.32)}
+  #rform input,#rform textarea{width:100%;background:rgba(236,231,223,0.05);border:1px solid rgba(236,231,223,0.20);border-radius:12px;color:#ECE7DF;font-family:'Inter','Helvetica Neue',sans-serif;font-size:14px;font-weight:300;padding:14px 16px;outline:none;transition:border-color 0.25s ease;-webkit-appearance:none}
+  #rform input::placeholder,#rform textarea::placeholder{color:rgba(236,231,223,0.35)}
   #rform input:focus,#rform textarea:focus{border-color:rgba(201,138,62,0.55)}
   #rsubmit{transition:background 0.25s ease,color 0.25s ease,border-color 0.25s ease}
   #rsubmit:hover{background:#C98A3E!important;color:#0A0A0A!important;border-color:#C98A3E!important}
@@ -58,6 +60,10 @@
     #rnav{padding:14px 24px!important}
     #rnavlogo{height:36px!important}
     #rnav-cta{padding:9px 16px!important;font-size:9px!important}
+    #rherocopy{margin-top:34px!important}
+    .rheroh1{font-size:clamp(25px,6.6vw,36px)!important}
+    .rherosub{font-size:14.5px!important}
+    #rherocta{padding:14px 28px!important}
     .rmispad{padding:56px 26px 44px!important}
     .rmish1{font-size:clamp(30px,7.4vw,44px)!important}
     .rlead{font-size:16px!important;line-height:1.55!important}
@@ -83,6 +89,7 @@
   }
   @media(max-width:480px){
     .rmish1{font-size:clamp(26px,7vw,36px)!important}
+    .rheroh1{font-size:clamp(23px,7vw,30px)!important}
     .rctah2,.rbelieflead{font-size:clamp(23px,6.2vw,30px)!important}
     .rlead{font-size:15px!important}
     .rprostep h3{font-size:20px!important}
@@ -98,12 +105,12 @@
 <!-- NAV -->
 <nav id="rnav" style="position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 64px;display:flex;align-items:center;justify-content:space-between;transition:background 0.5s ease,border-bottom-color 0.5s ease;border-bottom:1px solid transparent">
   <img id="rnavlogo" src="logos/schema52-A-dark.svg" alt="Schema 52" style="height:46px;width:auto;opacity:0;transition:opacity 0.7s ease">
-  <a id="rnav-cta" href="#rcta" style="font-size:10px;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;border:1px solid rgba(201,138,62,0.38);color:#ECE7DF;padding:11px 24px;opacity:0;transition:opacity 0.7s ease,border-color 0.25s ease,color 0.25s ease">Book a Demo</a>
+  <a id="rnav-cta" href="#rcta" style="font-size:10px;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;background:#ECE7DF;border:1px solid #ECE7DF;color:#0A0A0A;padding:11px 24px;border-radius:100px;opacity:0;transition:opacity 0.7s ease,background 0.25s ease,border-color 0.25s ease,color 0.25s ease">Book a Call</a>
 </nav>
 
 <!-- HERO -->
-<section style="background:#000;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative">
-  <svg viewBox="0 0 243 277" xmlns="http://www.w3.org/2000/svg" style="width:auto;height:min(22vh,175px);display:block;overflow:visible;position:relative;z-index:2">
+<section style="background:#000;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;position:relative;padding:0 24px">
+  <svg viewBox="0 0 243 277" xmlns="http://www.w3.org/2000/svg" style="width:auto;height:min(20vh,152px);display:block;overflow:visible;position:relative;z-index:2">
     <g id="rstroke" stroke="#ECE7DF" stroke-linejoin="round" stroke-width="2.2">
       <path id="rp1" d="M92.6487 113.132L122.879 131.038L234.502 65.9425L163.219 23.8403L81.3986 71.6359L71.252 65.1808L151.298 17.6758L121.644 0L9.43741 64.8869L81.9047 106.914L163.219 59.5159L173.648 65.9425L92.6487 113.132Z"></path>
       <path id="rp2" d="M112.602 180.928V145.514L0 80.1171V163.702C0 163.702 77.5055 174.174 81.4499 210.681C81.9746 215.537 81.4499 223.188 81.4499 223.188L0 175.392V211.99L112.539 276.674L112.602 192.598L31.5724 145.514V134.266L112.602 180.928Z"></path>
@@ -115,8 +122,16 @@
       <path d="M129.602 180.928V145.514L242.205 80.1171V163.702L160.755 210.681V223.188L242.205 175.392V211.99L129.665 276.674L129.602 192.598L210.632 145.514C210.632 145.514 211.116 138.632 210.632 134.266C206.608 97.9724 129.602 180.928 129.602 180.928Z" fill="#ECE7DF"></path>
     </g>
   </svg>
+
+  <!-- Hero copy — revealed by JS after the mark resolves -->
+  <div id="rherocopy" style="opacity:0;transition:opacity 1.2s ease;position:relative;z-index:2;text-align:center;max-width:760px;margin-top:5vh">
+    <h1 id="rheroh1" class="rheroh1" style="font-size:clamp(28px,4vw,52px);font-weight:300;line-height:1.08;letter-spacing:-0.022em;color:#ECE7DF;text-wrap:balance">The operating partner behind your firm.</h1>
+    <p class="rherosub" style="font-size:clamp(14px,1.2vw,17px);font-weight:300;line-height:1.6;color:rgba(236,231,223,0.60);max-width:560px;margin:22px auto 0;text-wrap:pretty">S52 redesigns client operations with AI agents your team owns, so growth isn’t held back by operational bottlenecks.</p>
+    <a href="#rcta" id="rherocta" style="display:inline-flex;align-items:center;gap:12px;margin-top:36px;background:#ECE7DF;border:1px solid #ECE7DF;color:#0A0A0A;font-size:11px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;padding:15px 34px;border-radius:100px;transition:background 0.25s ease,color 0.25s ease,border-color 0.25s ease">Book a Call <span style="font-size:13px">→</span></a>
+  </div>
+
   <!-- Warm bleed, injected by JS after mark resolves -->
-  <div id="rbleed" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 58%,rgba(201,138,62,0.065) 0%,transparent 62%);opacity:0;transition:opacity 3.2s ease;pointer-events:none;z-index:1"></div>
+  <div id="rbleed" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 58%,rgba(201,138,62,0.065) 0%,transparent 62%);opacity:0;transition:opacity 2.4s ease;pointer-events:none;z-index:1"></div>
   <!-- Scroll hint -->
   <div id="rscrollhint" style="position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transition:opacity 0.6s ease;pointer-events:none;z-index:2">
     <span style="font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(236,231,223,0.22)">Scroll</span>
@@ -130,22 +145,8 @@
 <section style="background:#F3F2EF;box-shadow:inset 0 34px 46px -34px rgba(0,0,0,0.42)">
   <div class="rmispad" style="padding:120px 64px 104px;text-align:center">
 
-    <h1 class="rmish1" style="font-size:clamp(46px,6vw,80px);font-weight:300;line-height:1.07;letter-spacing:-0.026em;color:#0A0A0A;text-wrap:pretty">Create more capacity<br>for work that matters most.</h1>
-    <p class="rlead" style="font-size:clamp(17px,1.4vw,21px);font-weight:300;line-height:1.6;color:rgba(10,10,10,0.52);text-wrap:pretty;max-width:720px;margin:28px auto 0">S52 helps professional services firms capture the opportunities their teams are too busy to chase. We redesign the systems behind client work, turning the work around the work into more time for revenue, service, and growth.</p>
-
-    <!-- Credentials -->
-    <div class="rreveal" style="margin-top:44px;border-top:1px solid rgba(10,10,10,0.1);padding-top:28px">
-      <p style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(10,10,10,0.24);margin-bottom:24px">Built by leaders from</p>
-      <div id="rcredlogos" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
-        <img src="logos/techstars.png" alt="Techstars" style="height:22px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
-        <img src="logos/shell.png" alt="Shell" style="height:28px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
-        <img src="logos/accenture.png" alt="Accenture" style="height:20px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
-        <img src="logos/bain.png" alt="Bain" style="height:16px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
-        <img src="logos/gartner.png" alt="Gartner" style="height:16px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
-        <img src="logos/heb.webp" alt="HEB" style="height:28px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
-        <img src="logos/amc.png" alt="AMC" style="height:18px;width:auto;filter:brightness(0);opacity:0.28;flex-shrink:0">
-      </div>
-    </div>
+    <h1 class="rmish1" style="font-size:clamp(46px,6vw,80px);font-weight:300;line-height:1.07;letter-spacing:-0.026em;color:#0A0A0A;text-wrap:pretty">Great people can only move<br>as fast as the systems around them.</h1>
+    <p class="rlead" style="font-size:clamp(17px,1.4vw,21px);font-weight:300;line-height:1.6;color:rgba(10,10,10,0.62);text-wrap:pretty;max-width:800px;margin:28px auto 0">S52 helps professional services firms capture the opportunities their teams are too busy to chase. We redesign the systems behind client work, turning the work around the work into more time for revenue, service, and growth.</p>
 
   </div>
 </section>
@@ -190,59 +191,49 @@
   </div>
 </section>
 
-<!-- WHAT WE BELIEVE -->
-<section style="background:#F3F2EF;box-shadow:inset 0 34px 46px -34px rgba(0,0,0,0.42)">
-  <div class="rpropad" style="max-width:820px;margin:0 auto;padding:120px 64px 104px;text-align:center">
-    <div class="rreveal">
-      <p class="rbelieflead" style="font-size:clamp(34px,4.4vw,58px);font-weight:300;line-height:1.12;letter-spacing:-0.022em;color:#0A0A0A;text-wrap:pretty">Great people can only move as fast as the systems around them.</p>
-      <p class="rbeliefbody" style="font-size:clamp(17px,1.4vw,21px);font-weight:300;line-height:1.6;color:rgba(10,10,10,0.52);text-wrap:pretty;margin-top:32px">For too long, professional services firms have accepted manual coordination as the cost of serving clients. <span style="color:#C98A3E;font-weight:400">We don't.</span> S52 exists to eliminate that coordination burden, so firms can grow by improving their systems, not by adding more administrative work.</p>
-    </div>
-  </div>
-</section>
-
 <!-- HOW WE WORK: editorial -->
-<section style="background:#0A0A0A;box-shadow:inset 0 24px 40px -28px rgba(243,242,239,0.10)">
+<section style="background:#F3F2EF;box-shadow:inset 0 34px 46px -34px rgba(0,0,0,0.42)">
   <div class="rpropad" style="max-width:960px;margin:0 auto;padding:112px 64px">
 
     <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding-bottom:56px">
       <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">01</p>
       <div>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><ellipse class="riconpath" cx="12" cy="12" rx="10" ry="6" style="stroke-dasharray:120;stroke-dashoffset:120"></ellipse><circle class="riconpath" cx="12" cy="12" r="3" style="stroke-dasharray:120;stroke-dashoffset:120"></circle></svg>
-        <h3 style="font-size:26px;font-weight:300;color:#ECE7DF;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Understand the operation.</h3>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(236,231,223,0.62);text-wrap:pretty">We map how work moves through your firm, from first inquiry to final deliverable, and find where it stalls. Before we build anything, we agree on the numbers that define success: turnaround, capacity, cost.</p>
+        <h3 style="font-size:26px;font-weight:300;color:#0A0A0A;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Understand the operation.</h3>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(10,10,10,0.62);text-wrap:pretty">We map how work moves through your firm — from first inquiry to final deliverable — and find where it stalls. Before we build, we agree on the numbers that define success: turnaround, capacity, cost.</p>
       </div>
     </div>
 
-    <div style="height:1px;background:rgba(236,231,223,0.07)"></div>
+    <div style="height:1px;background:rgba(10,10,10,0.1)"></div>
 
     <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding:56px 0">
       <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">02</p>
       <div>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><circle class="riconpath" cx="12" cy="12" r="8" style="stroke-dasharray:120;stroke-dashoffset:120"></circle><circle class="riconpath" cx="12" cy="12" r="2" style="stroke-dasharray:120;stroke-dashoffset:120"></circle><line class="riconpath" x1="12" y1="2" x2="12" y2="7" style="stroke-dasharray:120;stroke-dashoffset:120"></line><line class="riconpath" x1="12" y1="17" x2="12" y2="22" style="stroke-dasharray:120;stroke-dashoffset:120"></line><line class="riconpath" x1="2" y1="12" x2="7" y2="12" style="stroke-dasharray:120;stroke-dashoffset:120"></line><line class="riconpath" x1="17" y1="12" x2="22" y2="12" style="stroke-dasharray:120;stroke-dashoffset:120"></line></svg>
-        <h3 style="font-size:26px;font-weight:300;color:#ECE7DF;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Find the leverage.</h3>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(236,231,223,0.62);text-wrap:pretty">In most firms, one or two bottlenecks create the majority of the drag. We fix those first. That focus is why the work tends to pay off in days, not quarters.</p>
+        <h3 style="font-size:26px;font-weight:300;color:#0A0A0A;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Find the leverage.</h3>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(10,10,10,0.62);text-wrap:pretty">In most firms, one or two bottlenecks create the majority of the drag. We fix those first. That focus is why the work tends to pay off in days, not quarters.</p>
       </div>
     </div>
 
-    <div style="height:1px;background:rgba(236,231,223,0.07)"></div>
+    <div style="height:1px;background:rgba(10,10,10,0.1)"></div>
 
     <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding:56px 0">
       <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">03</p>
       <div>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><rect class="riconpath" x="2" y="8" width="13" height="8" rx="1" style="stroke-dasharray:120;stroke-dashoffset:120"></rect><line class="riconpath" x1="15" y1="12" x2="22" y2="12" style="stroke-dasharray:120;stroke-dashoffset:120"></line><polyline class="riconpath" points="19,9 22,12 19,15" style="stroke-dasharray:120;stroke-dashoffset:120"></polyline></svg>
-        <h3 style="font-size:26px;font-weight:300;color:#ECE7DF;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Build it to last.</h3>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(236,231,223,0.62);text-wrap:pretty">What we build belongs to your firm. No subscription to outgrow, no standing dependency on us. We hand it over complete, and it keeps running long after we've gone.</p>
+        <h3 style="font-size:26px;font-weight:300;color:#0A0A0A;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Build it to last.</h3>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(10,10,10,0.62);text-wrap:pretty">What we build belongs to your firm. No subscription to outgrow, no standing dependency on us. We hand it over complete, and it keeps running long after we've gone.</p>
       </div>
     </div>
 
-    <div style="height:1px;background:rgba(236,231,223,0.07)"></div>
+    <div style="height:1px;background:rgba(10,10,10,0.1)"></div>
 
     <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding-top:56px">
       <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">04</p>
       <div>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><path class="riconpath" d="M8,4 A8,8 0 1,0 20,12" style="stroke-dasharray:120;stroke-dashoffset:120"></path><polyline class="riconpath" points="16,8 20,12 16,16" style="stroke-dasharray:120;stroke-dashoffset:120"></polyline></svg>
-        <h3 style="font-size:26px;font-weight:300;color:#ECE7DF;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Stay in it with you.</h3>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(236,231,223,0.62);text-wrap:pretty">We don't hand off and vanish. We hold the work to the benchmarks we set, tune it as your firm changes, and stay close as new work comes in. That's the difference between a partner and a vendor.</p>
+        <h3 style="font-size:26px;font-weight:300;color:#0A0A0A;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Stay in it with you.</h3>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(10,10,10,0.62);text-wrap:pretty">We don't hand off and vanish. We hold the work to the benchmarks we set, tune it as your firm changes, and stay close as new work comes in. That's the difference between a partner and a vendor.</p>
       </div>
     </div>
 
@@ -250,25 +241,39 @@
 </section>
 
 <!-- CTA -->
-<section id="rcta" style="background:#F3F2EF;box-shadow:inset 0 34px 46px -34px rgba(0,0,0,0.42)">
+<section id="rcta" style="background:#0A0A0A;box-shadow:inset 0 24px 40px -28px rgba(243,242,239,0.10)">
   <div class="rctapad" style="max-width:1280px;margin:0 auto;padding:120px 64px 104px">
     <div class="rctainner" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:44px">
 
+      <!-- Credentials -->
+      <div class="rreveal" style="width:100%;max-width:760px">
+        <p style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(236,231,223,0.4);margin-bottom:24px">Built by operators from</p>
+        <div id="rcredlogos" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+          <img src="logos/techstars.png" alt="Techstars" style="height:22px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
+          <img src="logos/shell.png" alt="Shell" style="height:28px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
+          <img src="logos/accenture.png" alt="Accenture" style="height:20px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
+          <img src="logos/bain.png" alt="Bain" style="height:16px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
+          <img src="logos/gartner.png" alt="Gartner" style="height:16px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
+          <img src="logos/heb.webp" alt="HEB" style="height:28px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
+          <img src="logos/amc.png" alt="AMC" style="height:18px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
+        </div>
+      </div>
+
       <div style="max-width:760px">
-        <h2 class="rctah2" style="font-size:clamp(34px,4.4vw,58px);font-weight:300;line-height:1.12;letter-spacing:-0.022em;color:#0A0A0A;text-wrap:pretty">Your firm,<br>without the busywork.</h2>
+        <h2 class="rctah2" style="font-size:clamp(34px,4.4vw,58px);font-weight:300;line-height:1.12;letter-spacing:-0.022em;color:#ECE7DF;text-wrap:pretty">Your firm,<br>without the busywork.</h2>
       </div>
 
       <div class="rctaform rreveal" data-delay="120" style="width:100%;max-width:460px">
-        <p class="rlead" style="font-size:clamp(17px,1.4vw,21px);font-weight:300;line-height:1.6;color:rgba(10,10,10,0.52);margin-bottom:28px;text-wrap:pretty">Let’s show you where your team gets time back.</p>
+        <p class="rlead" style="font-size:clamp(17px,1.4vw,21px);font-weight:300;line-height:1.6;color:rgba(236,231,223,0.6);margin-bottom:28px;text-wrap:pretty">Let’s show you where your team gets time back.</p>
         <form id="rform" style="display:flex;flex-direction:column;gap:8px">
           <div id="rformrow" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
             <input type="text" name="name" placeholder="Name" autocomplete="name" required>
             <input type="email" name="email" placeholder="Work email" autocomplete="email" required>
           </div>
           <input type="text" name="company" placeholder="Company" autocomplete="organization">
-          <textarea name="message" placeholder="How can we help?" rows="3" style="width:100%;background:rgba(10,10,10,0.03);border:1px solid rgba(10,10,10,0.22);color:#0A0A0A;font-family:'Inter','Helvetica Neue',sans-serif;font-size:14px;font-weight:300;padding:14px 16px;outline:none;transition:border-color 0.25s ease;resize:none;-webkit-appearance:none"></textarea>
-          <button id="rsubmit" type="submit" style="display:flex;align-items:center;justify-content:center;gap:12px;background:transparent;color:#0A0A0A;border:1px solid rgba(201,138,62,0.68);font-size:10px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;padding:16px 32px;cursor:pointer;font-family:'Inter','Helvetica Neue',sans-serif;margin-top:6px"><span id="rsubmit-label">Book a Demo</span> <span id="rsubmit-arrow" style="font-size:13px">→</span></button>
-          <p id="rform-status" style="font-size:12px;font-weight:300;color:rgba(10,10,10,0.6);min-height:16px"></p>
+          <textarea name="message" placeholder="How can we help?" rows="3" style="width:100%;background:rgba(236,231,223,0.05);border:1px solid rgba(236,231,223,0.20);border-radius:12px;color:#ECE7DF;font-family:'Inter','Helvetica Neue',sans-serif;font-size:14px;font-weight:300;padding:14px 16px;outline:none;transition:border-color 0.25s ease;resize:none;-webkit-appearance:none"></textarea>
+          <button id="rsubmit" type="submit" style="display:flex;align-items:center;justify-content:center;gap:12px;background:#ECE7DF;color:#0A0A0A;border:1px solid #ECE7DF;font-size:10px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;padding:16px 32px;border-radius:100px;cursor:pointer;font-family:'Inter','Helvetica Neue',sans-serif;margin-top:6px"><span id="rsubmit-label">Book a Call</span> <span id="rsubmit-arrow" style="font-size:13px">→</span></button>
+          <p id="rform-status" style="font-size:12px;font-weight:300;color:rgba(236,231,223,0.6);min-height:16px"></p>
         </form>
       </div>
 
@@ -277,11 +282,11 @@
 </section>
 
 <!-- FOOTER -->
-<footer style="background:#F3F2EF">
-  <div style="max-width:1280px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(10,10,10,0.10),transparent)"></div>
+<footer style="background:#0A0A0A">
+  <div style="max-width:1280px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(236,231,223,0.12),transparent)"></div>
   <div class="rfooterrow rreveal" style="max-width:1280px;margin:0 auto;padding:32px 64px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
-    <img src="logos/schema52-A-light.svg" alt="Schema 52" style="height:32px;width:auto;opacity:0.58;flex-shrink:0">
-    <p style="font-size:10px;font-weight:300;color:rgba(10,10,10,0.48);letter-spacing:0.05em;white-space:nowrap;flex-shrink:0">© 2026 SCHEMA 52</p>
+    <img src="logos/schema52-A-dark.svg" alt="Schema 52" style="height:32px;width:auto;opacity:0.58;flex-shrink:0">
+    <p style="font-size:10px;font-weight:300;color:rgba(236,231,223,0.48);letter-spacing:0.05em;white-space:nowrap;flex-shrink:0">© 2026 SCHEMA 52</p>
   </div>
 </footer>
 
@@ -296,17 +301,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const s = document.createElement('style');
     s.id = 'ranim';
     s.textContent = [
-      '#rp1{animation:rtrace 3.0s cubic-bezier(0.4,0,0.2,1) 0.3s forwards}',
-      '#rp2{animation:rtrace 3.4s cubic-bezier(0.4,0,0.2,1) 0.9s forwards}',
-      '#rp3{animation:rtrace 3.4s cubic-bezier(0.4,0,0.2,1) 0.9s forwards}',
-      '#rfill{animation:rfi 1.8s ease 3.4s forwards}',
-      '#rstroke{animation:rfo 1.8s ease 3.4s forwards}',
-      '#rscrollhint{animation:rfi 1.0s ease 6.5s forwards}',
-      '#rdrip{animation:rdrip 2.0s ease-in-out 7.5s infinite}',
+      '#rp1{animation:rtrace 1.5s cubic-bezier(0.4,0,0.2,1) 0.2s forwards}',
+      '#rp2{animation:rtrace 1.7s cubic-bezier(0.4,0,0.2,1) 0.5s forwards}',
+      '#rp3{animation:rtrace 1.7s cubic-bezier(0.4,0,0.2,1) 0.5s forwards}',
+      '#rfill{animation:rfi 1.0s ease 1.9s forwards}',
+      '#rstroke{animation:rfo 1.0s ease 1.9s forwards}',
+      '#rscrollhint{animation:rfi 1.0s ease 3.8s forwards}',
+      '#rdrip{animation:rdrip 2.0s ease-in-out 4.4s infinite}',
     ].join('');
     document.head.appendChild(s);
   }
-  setTimeout(() => { const b = E('rbleed'); if (b) b.style.opacity = '1'; }, 3600);
+  setTimeout(() => { const b = E('rbleed'); if (b) b.style.opacity = '1'; }, 2000);
 
   // ── WORD SPLIT HELPER ─────────────────────────────────────────────────────
   const splitWords = el => {
@@ -317,6 +322,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return `<span class="rword" style="transition-delay:${i * 0.055}s">${w}</span>`;
     }).join(' ');
   };
+
+  // ── HERO COPY REVEAL (after mark resolves ~2.9s) ─────────────────────────
+  const heroCopy = E('rherocopy');
+  const heroH1   = E('rheroh1');
+  splitWords(heroH1);
+  setTimeout(() => {
+    if (heroCopy) heroCopy.style.opacity = '1';
+    if (heroH1) [...heroH1.querySelectorAll('.rword')].forEach((w, i) =>
+      setTimeout(() => w.classList.add('in'), i * 55)
+    );
+  }, 2600);
 
   // ── MISSION WORD REVEAL ───────────────────────────────────────────────────
   const misSec = document.querySelector('section[style*="background:#F3F2EF"]');
@@ -507,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Q('#rform input, #rform textarea').forEach(f => f.blur());
       } catch (err) {
         submit.disabled = false;
-        label.textContent = 'Book a Demo';
+        label.textContent = 'Book a Call';
         status.textContent = 'Something went wrong. Please try again or email us directly.';
       }
     });
