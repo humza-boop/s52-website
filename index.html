@@ -31,7 +31,13 @@
   .riphoto{transition:transform 1.1s cubic-bezier(0.4,0,0.2,1)}
   .rivignette{transition:opacity 0.65s ease}
   .rilabel{transition:color 0.4s ease}
-  .ritagline{transition:opacity 0.5s ease,transform 0.5s cubic-bezier(0.16,1,0.3,1)}
+  .ridiag{transition:opacity 0.5s ease}
+  .ribreak{transition:opacity 0.55s ease,transform 0.55s cubic-bezier(0.16,1,0.3,1)}
+  .ribreak ul{list-style:none;margin:0;padding:0}
+  .ribreak li{position:relative;padding-left:16px;font-size:13px;font-weight:400;color:rgba(236,231,223,0.84);line-height:1.55;margin-bottom:7px}
+  .ribreak li:before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:#C98A3E;border-radius:50%}
+  .rifoot{font-size:12px;font-weight:400;color:rgba(236,231,223,0.68);line-height:1.6;margin-top:13px;text-wrap:pretty}
+  .rifoot b{color:#C98A3E;font-weight:400}
   /* Nav */
   #rnav-cta:hover{background:#C98A3E!important;border-color:#C98A3E!important;color:#0A0A0A!important}
   /* Hero CTA */
@@ -78,12 +84,12 @@
     .rctah2,.rbelieflead{font-size:clamp(26px,6.6vw,38px)!important}
     #rformrow{grid-template-columns:1fr!important}
     .ripanels{grid-template-columns:1fr!important;height:auto!important}
-    .ripanel{height:60vw!important;min-height:240px!important}
+    .ripanel{height:60vw!important;min-height:360px!important}
     #rcredlogos{gap:16px 28px!important;flex-wrap:wrap!important;justify-content:center!important}
     .rfooterrow{padding:32px 28px!important;flex-direction:column!important;align-items:center!important;gap:14px!important;text-align:center!important}
   }
   @media(hover:none){
-    .ritagline{opacity:1!important;transform:none!important}
+    .ribreak{opacity:1!important;transform:none!important}
     .rivignette{opacity:1!important}
     .rilabel{color:rgba(236,231,223,0.88)!important}
   }
@@ -158,33 +164,57 @@
     <!-- Tax & Accounting -->
     <div class="ripanel rreveal" data-delay="0" style="position:relative;overflow:hidden;cursor:default">
       <div class="riphoto" style="position:absolute;inset:-6%;background-image:url('images/image_tax.png');background-size:cover;background-position:4% center;filter:brightness(0.72) saturate(0.7)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.64) 0%,transparent 48%);pointer-events:none"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.86) 0%,rgba(0,0,0,0.42) 42%,transparent 78%);pointer-events:none"></div>
       <div class="rivignette" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.28) 52%,transparent 72%);opacity:0;pointer-events:none"></div>
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px">
-        <p class="ritagline" style="font-size:13px;font-weight:300;color:rgba(236,231,223,0.88);line-height:1.6;margin-bottom:14px;opacity:0;transform:translateY(8px);text-wrap:pretty">Great tax work depends on great operations.<br>We build systems that keep work moving from first contact to final filing.</p>
-        <p class="rilabel" style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(236,231,223,0.42)">Tax &amp; Accounting</p>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px;text-shadow:0 1px 3px rgba(0,0,0,0.55)">
+        <p class="rilabel" style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(236,231,223,0.58);margin-bottom:11px">Tax &amp; Accounting</p>
+        <p class="ridiag" style="font-size:16px;font-weight:400;color:rgba(236,231,223,0.96);line-height:1.6;margin-bottom:15px;text-wrap:pretty">Most of the delay on a return happens before anyone starts it.</p>
+        <div class="ribreak" style="opacity:0;transform:translateY(8px)">
+          <ul>
+            <li>Chasing signed engagement letters and missing documents</li>
+            <li>PBC lists that stall work into extension season</li>
+            <li>Preparers waiting on inputs while review time disappears</li>
+          </ul>
+          <p class="rifoot">We build the intake and follow-up systems that keep work moving from first contact to final filing. At one firm, confirming fit up front saved the team <b>close to 300 hours</b>.</p>
+        </div>
       </div>
     </div>
 
     <!-- Legal -->
     <div class="ripanel rreveal" data-delay="90" style="position:relative;overflow:hidden;cursor:default;border-left:1px solid rgba(0,0,0,0.5)">
       <div class="riphoto" style="position:absolute;inset:-6%;background-image:url('images/image_legal.png');background-size:cover;background-position:72% 20%;filter:brightness(0.70) saturate(0.7)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.64) 0%,transparent 48%);pointer-events:none"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.86) 0%,rgba(0,0,0,0.42) 42%,transparent 78%);pointer-events:none"></div>
       <div class="rivignette" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.28) 52%,transparent 72%);opacity:0;pointer-events:none"></div>
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px">
-        <p class="ritagline" style="font-size:13px;font-weight:300;color:rgba(236,231,223,0.88);line-height:1.6;margin-bottom:14px;opacity:0;transform:translateY(8px);text-wrap:pretty">Every matter generates information before it generates legal work.<br>We organize research, files, and client communication so attorneys stay focused on what they are paid to do.</p>
-        <p class="rilabel" style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(236,231,223,0.42)">Legal</p>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px;text-shadow:0 1px 3px rgba(0,0,0,0.55)">
+        <p class="rilabel" style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(236,231,223,0.58);margin-bottom:11px">Legal</p>
+        <p class="ridiag" style="font-size:16px;font-weight:400;color:rgba(236,231,223,0.96);line-height:1.6;margin-bottom:15px;text-wrap:pretty">A matter generates information long before it generates billable work.</p>
+        <div class="ribreak" style="opacity:0;transform:translateY(8px)">
+          <ul>
+            <li>Intake and conflicts checks that hold up the engagement letter</li>
+            <li>Associates billing hours to document collection</li>
+            <li>Client updates that slip because no one owns them</li>
+          </ul>
+          <p class="rifoot">We organize intake, files, and client communication so attorneys spend their time practicing law.</p>
+        </div>
       </div>
     </div>
 
     <!-- Financial Services -->
     <div class="ripanel rreveal" data-delay="180" style="position:relative;overflow:hidden;cursor:default;border-left:1px solid rgba(0,0,0,0.5)">
       <div class="riphoto" style="position:absolute;inset:-6%;background-image:url('images/image_finance.png');background-size:cover;background-position:center 35%;filter:brightness(0.72) saturate(0.7)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.64) 0%,transparent 48%);pointer-events:none"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.86) 0%,rgba(0,0,0,0.42) 42%,transparent 78%);pointer-events:none"></div>
       <div class="rivignette" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.28) 52%,transparent 72%);opacity:0;pointer-events:none"></div>
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px">
-        <p class="ritagline" style="font-size:13px;font-weight:300;color:rgba(236,231,223,0.88);line-height:1.6;margin-bottom:14px;opacity:0;transform:translateY(8px);text-wrap:pretty">Every client relationship runs on work clients never see.<br>We modernize the systems behind onboarding, reporting, and ongoing service.</p>
-        <p class="rilabel" style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(236,231,223,0.42)">Financial Services</p>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px;text-shadow:0 1px 3px rgba(0,0,0,0.55)">
+        <p class="rilabel" style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(236,231,223,0.58);margin-bottom:11px">Financial Services</p>
+        <p class="ridiag" style="font-size:16px;font-weight:400;color:rgba(236,231,223,0.96);line-height:1.6;margin-bottom:15px;text-wrap:pretty">Clients judge the relationship on the work they never see.</p>
+        <div class="ribreak" style="opacity:0;transform:translateY(8px)">
+          <ul>
+            <li>Account opening that comes back not-in-good-order</li>
+            <li>Client reporting rebuilt by hand every cycle</li>
+            <li>Service requests routed through too many hands</li>
+          </ul>
+          <p class="rifoot">We modernize the systems behind onboarding, reporting, and ongoing service.</p>
+        </div>
       </div>
     </div>
 
@@ -416,7 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Q('.ripanel').forEach(panel => {
     const photo    = panel.querySelector('.riphoto');
     const vignette = panel.querySelector('.rivignette');
-    const tagline  = panel.querySelector('.ritagline');
+    const breaks   = panel.querySelector('.ribreak');
     const label    = panel.querySelector('.rilabel');
     const state    = { hovered: false, py: 0 };
     indPanels.push({ panel, photo, state });
@@ -427,14 +457,14 @@ document.addEventListener('DOMContentLoaded', () => {
     panel.addEventListener('mouseenter', () => {
       state.hovered = true; applyT();
       if (vignette) vignette.style.opacity = '1';
-      if (tagline)  { tagline.style.opacity = '1'; tagline.style.transform = 'translateY(0)'; }
+      if (breaks)   { breaks.style.opacity = '1'; breaks.style.transform = 'translateY(0)'; }
       if (label)    label.style.color = 'rgba(236,231,223,0.88)';
     });
     panel.addEventListener('mouseleave', () => {
       state.hovered = false; applyT();
       if (vignette) vignette.style.opacity = '0';
-      if (tagline)  { tagline.style.opacity = '0'; tagline.style.transform = 'translateY(8px)'; }
-      if (label)    label.style.color = 'rgba(236,231,223,0.42)';
+      if (breaks)   { breaks.style.opacity = '0'; breaks.style.transform = 'translateY(8px)'; }
+      if (label)    label.style.color = 'rgba(236,231,223,0.58)';
     });
   });
 
