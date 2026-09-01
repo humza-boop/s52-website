@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>S52 | AI-Native Professional Services</title>
 <meta name="description" content="S52 builds private AI around your firm's expertise, data, and ways of working — giving your people more time for judgment, advice, and the relationships that matter.">
 <meta name="theme-color" content="#0A0806">
@@ -42,8 +42,9 @@
 
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
-  html, body { margin: 0; padding: 0; background: #0A0806; }
-  body { color: #FFFFFF; font-family: var(--text); -webkit-font-smoothing: antialiased; }
+  html, body { margin: 0; padding: 0; min-height: 100%; background: #0A0806; }
+  html { background: #0A0806; }
+  body { color: #FFFFFF; font-family: var(--text); -webkit-font-smoothing: antialiased; overscroll-behavior: none; }
   a { color: #FFFFFF; text-decoration: none; }
   a:hover { color: #C98A3E; }
   a, button { -webkit-tap-highlight-color: transparent; }
@@ -61,20 +62,28 @@
     *, *::before, *::after { animation-duration: .001s !important; animation-delay: 0s !important; transition-duration: .001s !important; }
   }
 
-  .stage {
-    position: relative; min-height: 100dvh; box-sizing: border-box;
-    background: #0A0806; color: #FFFFFF; font-family: var(--text);
-    display: grid; grid-template-rows: auto minmax(0, 1fr) auto;
-    gap: clamp(16px, 3vh, 36px);
-    padding: clamp(20px, 3vh, 40px) var(--pad-r) clamp(18px, 2.6vh, 32px) var(--pad-l);
-    overflow: hidden;
-  }
-
-  .bg-mesh { position: absolute; inset: 0; pointer-events: none; animation: s52halo 1.4s ease-out both .1s; }
+  /* Background layers cover the whole visual viewport (behind iOS toolbars and
+     safe areas) — kept fixed so retracting toolbars never expose a bare edge. */
+  .backdrop { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; background: #0A0806; }
+  .bg-mesh { position: absolute !important; inset: 0; pointer-events: none; animation: s52halo 1.4s ease-out both .1s; }
   .bg-tint { position: absolute; inset: 0; pointer-events: none;
     background: linear-gradient(180deg, rgba(16,22,30,0.40) 0%, rgba(16,22,30,0.10) 42%, rgba(14,20,28,0.46) 100%); }
   .bg-grain { position: absolute; inset: 0; pointer-events: none; animation: s52grain 1.6s ease-out both .5s;
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.9'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  .stage {
+    position: relative; z-index: 1; box-sizing: border-box;
+    min-height: 100svh;
+    color: #FFFFFF; font-family: var(--text);
+    display: grid; grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(16px, 3vh, 36px);
+    padding:
+      max(clamp(20px, 3vh, 40px), env(safe-area-inset-top))
+      max(var(--pad-r), env(safe-area-inset-right))
+      max(clamp(18px, 2.6vh, 32px), env(safe-area-inset-bottom))
+      max(var(--pad-l), env(safe-area-inset-left));
+    overflow: hidden;
+  }
 
   .masthead { position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; gap: 24px; animation: s52rise .7s ease-out both; }
   .brand { display: flex; align-items: center; gap: 12px; padding: 8px 0; color: #FFFFFF; transition: opacity .2s ease; }
@@ -182,11 +191,13 @@
 </style>
 </head>
 <body>
-<div class="stage">
-  <mesh-gradient class="bg-mesh" aria-hidden="true" speed="1.1"></mesh-gradient>
-  <div class="bg-tint" aria-hidden="true"></div>
-  <div class="bg-grain" aria-hidden="true"></div>
+<div class="backdrop" aria-hidden="true">
+  <mesh-gradient class="bg-mesh" speed="1.1"></mesh-gradient>
+  <div class="bg-tint"></div>
+  <div class="bg-grain"></div>
+</div>
 
+<div class="stage">
   <header class="masthead">
     <a class="brand" href="/" aria-label="Schema 52 home">
       <img src="logos/schema52-mark-white.svg" alt="Schema 52" width="26" height="30">
