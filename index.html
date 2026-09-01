@@ -116,14 +116,16 @@
   .p-4 { margin: 5px 0 0 !important; font-size: clamp(12px, 0.72vw, 13px); font-weight: 400; line-height: 1.5; color: #C6C1B8; }
 
   .cta {
-    appearance: none; background: none; border: 0; padding: 10px 0; margin: 0; font: inherit;
-    font-size: 14px; font-weight: 500; color: #FFFFFF; cursor: pointer;
-    display: inline-flex; align-items: center; gap: 12px; min-height: 44px; white-space: nowrap;
-    border-bottom: 1px solid transparent; transition: border-color .25s ease;
+    appearance: none; background: none; border: 0; margin: 0; font: inherit;
+    font-size: clamp(14px, 0.9vw, 15px); font-weight: 500; letter-spacing: 0.01em;
+    color: #FFFFFF; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 12px; white-space: nowrap;
+    padding: 11px 2px 11px; border-bottom: 1px solid rgba(255,255,255,0.4);
+    transition: border-color .25s ease, color .25s ease;
   }
   .cta .arrow { color: #C98A3E; display: inline-block; transition: transform .3s cubic-bezier(.2,.7,.25,1); }
-  .cta:hover { border-color: #C98A3E; }
-  .cta:hover .arrow { transform: translateX(7px); }
+  .cta:hover, .cta:active { border-color: #C98A3E; }
+  .cta:hover .arrow, .cta:active .arrow { transform: translateX(6px); }
 
   .colophon { position: relative; z-index: 2; display: flex; flex-wrap: wrap; align-items: baseline;
     justify-content: space-between; gap: 8px 28px; padding-top: clamp(16px, 2.4vh, 28px);
@@ -199,9 +201,6 @@
     <a class="brand" href="/" aria-label="Schema 52 home">
       <img src="logos/schema52-mark-white.svg" alt="Schema 52" width="26" height="30">
     </a>
-    <nav>
-      <button type="button" class="link-btn" data-open-contact>Contact</button>
-    </nav>
   </header>
 
   <main class="lede">
@@ -223,7 +222,6 @@
   </main>
 
   <footer class="colophon">
-    <p class="est">Est. 2025</p>
     <p class="rights">&copy; 2026 Schema 52</p>
   </footer>
 </div>
