@@ -42,7 +42,7 @@ function appendRow(name, email, company, message) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
   if (!sheet) {
     sheet = SpreadsheetApp.getActiveSpreadsheet().insertSheet(SHEET_NAME);
-    sheet.appendRow(['Timestamp', 'Name', 'Email', 'Company', 'Message']);
+    sheet.appendRow(['Timestamp', 'Name', 'Email', 'Firm', 'Message']);
   }
   sheet.appendRow([new Date(), name, email, company, message]);
 }

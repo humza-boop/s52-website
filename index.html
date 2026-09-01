@@ -3,561 +3,337 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>S52 | The AI Operating Partner for Professional Services</title>
-<meta name="description" content="S52 rebuilds the operations behind professional services firms, so your experts focus on what only they can do.">
-<meta property="og:title" content="S52 | The AI Operating Partner for Professional Services">
-<meta property="og:description" content="We eliminate the manual coordination burden so firms can grow by improving their systems, not by adding administrative work.">
+<title>Schema 52 — Your firm, without the busywork.</title>
+<meta name="description" content="S52 builds private AI around your firm's expertise, data, and ways of working — giving your people more time for judgment, advice, and the relationships that matter.">
+<meta name="theme-color" content="#0A0806">
+
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="logos/schema52-mark-light.svg" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/svg+xml" href="logos/schema52-mark-dark.svg" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Schema 52 — Your firm, without the busywork.">
+<meta property="og:description" content="We help exceptional professional services firms stay deeply human. S52 builds private AI around your firm's expertise, data, and ways of working.">
+
+<link rel="icon" href="logos/schema52-mark-white.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Rethink+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:#000;font-family:'Inter','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;color:#ECE7DF;overflow-x:hidden}
-  a{text-decoration:none;color:inherit}
-  img{display:block}
-  ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#0A0A0A}::-webkit-scrollbar-thumb{background:rgba(201,138,62,0.35)}
-  /* Mark trace */
-  #rp1,#rp2,#rp3{stroke-dasharray:1500 1500;stroke-dashoffset:1500;fill:none}
-  #rfill{opacity:0}
-  #rstroke{opacity:1}
-  @keyframes rtrace{from{stroke-dashoffset:1500}to{stroke-dashoffset:0}}
-  @keyframes rfi{from{opacity:0}to{opacity:1}}
-  @keyframes rfo{from{opacity:1}to{opacity:0}}
-  @keyframes rdrip{0%{transform:translateY(-110%)}100%{transform:translateY(210%)}}
-  /* Industry panels */
-  .riphoto{transition:transform 1.1s cubic-bezier(0.4,0,0.2,1)}
-  .rivignette{transition:opacity 0.65s ease}
-  .rilabel{transition:color 0.4s ease}
-  .ridiag{transition:opacity 0.5s ease}
-  .ribreak{transition:opacity 0.55s ease,transform 0.55s cubic-bezier(0.16,1,0.3,1)}
-  .ribreak ul{list-style:none;margin:0;padding:0}
-  .ribreak li{position:relative;padding-left:16px;font-size:13px;font-weight:400;color:rgba(236,231,223,0.84);line-height:1.55;margin-bottom:7px}
-  .ribreak li:before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;background:#C98A3E;border-radius:50%}
-  .rifoot{font-size:12px;font-weight:400;color:rgba(236,231,223,0.68);line-height:1.6;margin-top:13px;text-wrap:pretty}
-  .rifoot b{color:#C98A3E;font-weight:400}
-  /* Nav */
-  #rnav-cta:hover{background:#C98A3E!important;border-color:#C98A3E!important;color:#0A0A0A!important}
-  /* Hero CTA */
-  #rherocta:hover{background:#C98A3E!important;border-color:#C98A3E!important;color:#0A0A0A!important}
-  /* Form */
-  #rform input,#rform textarea{width:100%;background:rgba(236,231,223,0.05);border:1px solid rgba(236,231,223,0.20);border-radius:12px;color:#ECE7DF;font-family:'Inter','Helvetica Neue',sans-serif;font-size:14px;font-weight:300;padding:14px 16px;outline:none;transition:border-color 0.25s ease;-webkit-appearance:none}
-  #rform input::placeholder,#rform textarea::placeholder{color:rgba(236,231,223,0.35)}
-  #rform input:focus,#rform textarea:focus{border-color:rgba(201,138,62,0.55)}
-  #rsubmit{transition:background 0.25s ease,color 0.25s ease,border-color 0.25s ease}
-  #rsubmit:hover{background:#C98A3E!important;color:#0A0A0A!important;border-color:#C98A3E!important}
-  #rsubmit:disabled{opacity:0.6;cursor:default}
-  /* Word reveal */
-  .rword{display:inline-block;opacity:0;transform:translateY(12px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
-  .rword.in{opacity:1;transform:none}
-  /* Icon path draw */
-  .riconpath{stroke-dashoffset:120;transition:stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1)}
-  /* Responsive */
-  @media(max-width:960px){
-    .rmispad{padding:100px 40px 84px!important}
-    .rmish1{font-size:clamp(40px,6vw,64px)!important}
-    .rpropad{padding:84px 40px!important}
-    .rctapad{padding:84px 40px!important}
-    .rctah2,.rbelieflead{font-size:clamp(34px,5vw,50px)!important}
+  :root {
+    --display: 'Rethink Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --text: 'Plus Jakarta Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --h1-weight: 700; --h1-weight-2: 500; --h1-ls: -0.032em; --h1-lh: 0.98;
+    --pad-l: 5%; --pad-r: clamp(20px, 3.2vw, 48px); --main-max: min(60%, 980px);
+    --h1-size: clamp(48px, 4.5vw, 72px); --logo: clamp(40px, 3.4vw, 48px);
+    --rule-gap: clamp(36px, 6vh, 68px); --main-pad: clamp(8px, 2vh, 32px);
+    --scrim: linear-gradient(100deg, rgba(12,17,24,0.62) 0%, rgba(12,17,24,0.50) 34%, rgba(12,17,24,0.28) 58%, rgba(12,17,24,0.08) 78%, rgba(12,17,24,0) 100%);
   }
-  @media(max-width:768px){
-    #rnav{padding:14px 24px!important}
-    #rnavlogo{height:36px!important}
-    #rnav-cta{padding:9px 16px!important;font-size:9px!important}
-    #rherocopy{margin-top:34px!important}
-    .rheroh1{font-size:clamp(25px,6.6vw,36px)!important}
-    .rherosub{font-size:14.5px!important}
-    #rherocta{padding:14px 28px!important}
-    .rmispad{padding:56px 26px 44px!important}
-    .rmish1{font-size:clamp(30px,7.4vw,44px)!important}
-    .rlead{font-size:16px!important;line-height:1.55!important}
-    .rpropad{padding:48px 26px!important}
-    .rprostep{grid-template-columns:30px 1fr!important;gap:16px!important;padding:28px 0!important}
-    .rprostep h3{font-size:21px!important}
-    .rprostep p{font-size:14.5px!important;line-height:1.68!important}
-    .rbeliefbody{font-size:16px!important;line-height:1.5!important}
-    .rctapad{padding:48px 26px 44px!important}
-    .rctainner{flex-direction:column!important;gap:30px!important}
-    .rctaform{flex:none!important;width:100%!important}
-    .rctah2,.rbelieflead{font-size:clamp(26px,6.6vw,38px)!important}
-    #rformrow{grid-template-columns:1fr!important}
-    .ripanels{grid-template-columns:1fr!important;height:auto!important}
-    .ripanel{height:60vw!important;min-height:360px!important}
-    #rcredlogos{gap:16px 28px!important;flex-wrap:wrap!important;justify-content:center!important}
-    .rfooterrow{padding:32px 28px!important;flex-direction:column!important;align-items:center!important;gap:14px!important;text-align:center!important}
+  @media (max-height: 760px) {
+    :root { --h1-size: clamp(34px, 3.6vw, 46px); --rule-gap: 26px; --main-pad: 6px; }
   }
-  @media(hover:none){
-    .ribreak{opacity:1!important;transform:none!important}
-    .rivignette{opacity:1!important}
-    .rilabel{color:rgba(236,231,223,0.88)!important}
+  @media (max-height: 600px) {
+    :root { --h1-size: clamp(30px, 3vw, 38px); --rule-gap: 18px; --main-pad: 0px; }
   }
-  @media(max-width:480px){
-    .rmish1{font-size:clamp(26px,7vw,36px)!important}
-    .rheroh1{font-size:clamp(23px,7vw,30px)!important}
-    .rctah2,.rbelieflead{font-size:clamp(23px,6.2vw,30px)!important}
-    .rlead{font-size:15px!important}
-    .rprostep h3{font-size:20px!important}
-    .rbeliefbody{font-size:15px!important}
-    .rmispad{padding:44px 22px 38px!important}
-    .rpropad{padding:40px 22px!important}
-    .rctapad{padding:42px 22px 42px!important}
+  @media (max-width: 820px) {
+    :root {
+      --pad-l: 24px; --pad-r: 24px; --main-max: 100%;
+      --h1-size: clamp(36px, 8.6vw, 52px); --logo: 40px;
+      --scrim: linear-gradient(160deg, rgba(12,17,24,0.30) 0%, rgba(12,17,24,0.56) 42%, rgba(12,17,24,0.74) 100%);
+    }
   }
+
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; padding: 0; background: #0A0806; }
+  body { color: #FFFFFF; font-family: var(--text); -webkit-font-smoothing: antialiased; }
+  a { color: #FFFFFF; text-decoration: none; }
+  a:hover { color: #C98A3E; }
+  input { font: inherit; }
+  :focus-visible { outline: 2px solid #C98A3E; outline-offset: 5px; border-radius: 1px; }
+
+  @keyframes s52rise { from { opacity: 0; transform: translate3d(0, 16px, 0); } to { opacity: 1; transform: none; } }
+  @keyframes s52fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes s52grain { from { opacity: 0; } to { opacity: 0.12; } }
+  @keyframes s52halo { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes s52rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes s52panel { from { opacity: 0; transform: translate3d(0, 12px, 0); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001s !important; animation-delay: 0s !important; transition-duration: .001s !important; }
+  }
+
+  .stage {
+    position: relative; min-height: 100dvh; box-sizing: border-box;
+    background: #0A0806; color: #FFFFFF; font-family: var(--text);
+    display: grid; grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(24px, 4vh, 48px);
+    padding: clamp(24px, 3.4vh, 48px) var(--pad-r) clamp(20px, 3vh, 36px) var(--pad-l);
+    overflow: hidden;
+  }
+
+  .bg-mesh { position: absolute; inset: 0; pointer-events: none; animation: s52halo 1.4s ease-out both .1s; }
+  .bg-tint { position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, rgba(16,22,30,0.40) 0%, rgba(16,22,30,0.10) 42%, rgba(14,20,28,0.46) 100%); }
+  .bg-grain { position: absolute; inset: 0; pointer-events: none; animation: s52grain 1.6s ease-out both .5s;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.9'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  .masthead { position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; gap: 24px; animation: s52rise .7s ease-out both; }
+  .brand { display: flex; align-items: center; gap: 12px; padding: 8px 0; color: #FFFFFF; transition: opacity .2s ease; }
+  .brand:hover { opacity: 0.72; color: #FFFFFF; }
+  .brand img { display: block; height: var(--logo); width: auto; filter: drop-shadow(0 3px 18px rgba(0,0,0,0.5)); }
+
+  .link-btn {
+    appearance: none; background: none; border: 0; padding: 10px 0; margin: 0; font: inherit;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #FFFFFF; cursor: pointer; border-bottom: 1px solid transparent; transition: border-color .2s ease;
+  }
+  .link-btn:hover { border-color: rgba(255,255,255,0.55); }
+
+  .lede { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center;
+    min-height: 0; padding: var(--main-pad) 0; max-width: var(--main-max);
+    animation: s52rise .9s cubic-bezier(.2,.7,.25,1) both .3s; }
+  .lede-scrim { position: absolute; left: -100vw; right: -100vw; top: -100vh; bottom: -100vh; pointer-events: none; background: var(--scrim); }
+
+  h1 { position: relative; z-index: 1; margin: 0; max-width: 780px; font-family: var(--display);
+    font-weight: var(--h1-weight); font-size: var(--h1-size); line-height: var(--h1-lh);
+    letter-spacing: var(--h1-ls); text-wrap: balance; }
+  h1 .l1 { display: block; animation: s52rise .9s cubic-bezier(.2,.7,.25,1) both .08s; }
+  h1 .l2 { display: block; font-weight: var(--h1-weight-2); color: #EDE9E2; animation: s52rise .9s cubic-bezier(.2,.7,.25,1) both .18s; }
+
+  .rule { position: relative; z-index: 1; height: 1px; width: min(670px, 100%); margin-top: var(--rule-gap);
+    background: rgba(232,228,221,0.16); transform-origin: left center; animation: s52rule 1s cubic-bezier(.16,.84,.28,1) both .5s; }
+
+  .body-col { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 30px; padding-top: 30px; }
+  .body-col .copy { display: flex; flex-direction: column; gap: 15px; max-width: 670px; }
+  .body-col p { margin: 0; text-wrap: pretty; }
+  .p-1 { font-size: clamp(16px, 1.2vw, 18px); font-weight: 600; line-height: 1.4; color: #FFFFFF; }
+  .p-2 { font-size: clamp(15px, 1.1vw, 16px); font-weight: 500; line-height: 1.45; color: #F2EFEA; }
+  .p-3 { font-size: clamp(14px, 1.02vw, 15px); font-weight: 400; line-height: 1.55; color: #EAE6DF; }
+  .p-4 { margin: 6px 0 0 !important; font-size: clamp(13px, 0.92vw, 14px); font-weight: 400; line-height: 1.55; color: #C4BFB6; }
+
+  .cta {
+    appearance: none; background: none; border: 0; padding: 12px 0; margin: 0; font: inherit;
+    font-size: 15px; font-weight: 500; color: #FFFFFF; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 12px; min-height: 44px; white-space: nowrap;
+    border-bottom: 1px solid transparent; transition: border-color .25s ease;
+  }
+  .cta .arrow { color: #C98A3E; display: inline-block; transition: transform .3s cubic-bezier(.2,.7,.25,1); }
+  .cta:hover { border-color: #C98A3E; }
+  .cta:hover .arrow { transform: translateX(7px); }
+
+  .colophon { position: relative; z-index: 2; display: flex; flex-wrap: wrap; align-items: baseline;
+    justify-content: space-between; gap: 8px 28px; padding-top: clamp(16px, 2.4vh, 28px);
+    font-size: 11px; font-weight: 400; line-height: 1.5; letter-spacing: 0.06em; color: rgba(240,236,229,0.44); }
+  .colophon p { margin: 0; }
+
+  /* ── Contact modal ─────────────────────────────────────────────── */
+  .modal { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center;
+    padding: clamp(16px, 4vw, 48px); background: rgba(5,5,5,0.58); backdrop-filter: blur(3px); animation: s52fade .22s ease-out both; }
+  .modal[hidden] { display: none; }
+  .modal-scrim { position: absolute; inset: 0; }
+  .modal-card {
+    position: relative; width: 100%; max-width: 520px; box-sizing: border-box;
+    background: linear-gradient(155deg, rgba(28,26,24,0.62) 0%, rgba(12,12,12,0.72) 100%);
+    backdrop-filter: blur(60px) saturate(1.2); -webkit-backdrop-filter: blur(60px) saturate(1.2);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 18px;
+    box-shadow: 0 40px 110px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.10);
+    padding: clamp(24px, 3vw, 40px); animation: s52panel .28s cubic-bezier(.2,.7,.25,1) both;
+  }
+  .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: clamp(20px, 2.4vw, 28px); }
+  .modal-title { margin: 0; font-family: var(--display); font-size: clamp(19px, 1.6vw, 23px); font-weight: 500; letter-spacing: -0.01em; color: #FFFFFF; }
+  .modal-close {
+    appearance: none; background: none; border: 0; padding: 8px; margin: -8px -8px 0 0; font: inherit;
+    font-size: 20px; line-height: 1; color: #CFCAC3; cursor: pointer; min-width: 44px; min-height: 44px; transition: color .2s ease;
+  }
+  .modal-close:hover { color: #FFFFFF; }
+
+  form.contact { display: flex; flex-direction: column; gap: 18px; }
+  .field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 18px; }
+  .field { display: flex; flex-direction: column; gap: 7px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #CFCAC3; }
+  .field input {
+    background: transparent; border: 0; border-bottom: 1px solid rgba(255,255,255,0.22); padding: 11px 0;
+    font-size: 16px; color: #FFFFFF; letter-spacing: 0; text-transform: none; transition: border-color .2s ease;
+  }
+  .field input:focus { border-color: #C98A3E; outline: none; }
+  .form-actions { display: flex; align-items: center; gap: 24px; padding-top: 6px; }
+  .btn-send {
+    appearance: none; background: none; border: 0; border-bottom: 1px solid rgba(255,255,255,0.28); padding: 12px 0; margin: 0;
+    font: inherit; font-size: 16px; font-weight: 500; color: #FFFFFF; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 12px; min-height: 44px; transition: border-color .2s ease;
+  }
+  .btn-send .arrow { color: #C98A3E; display: inline-block; transition: transform .3s cubic-bezier(.2,.7,.25,1); }
+  .btn-send:hover { border-color: #C98A3E; }
+  .btn-send:hover .arrow { transform: translateX(7px); }
+  .btn-send:disabled { opacity: 0.55; cursor: default; }
+  .btn-cancel {
+    appearance: none; background: none; border: 0; padding: 12px 0; font: inherit; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #CFCAC3; cursor: pointer; min-height: 44px; transition: color .2s ease;
+  }
+  .btn-cancel:hover { color: #FFFFFF; }
+  .form-status { margin: 4px 0 0; font-size: 13px; font-weight: 500; line-height: 1.5; color: #C98A3E; min-height: 1.2em; }
+
+  .sent { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+  .sent p { margin: 0; display: flex; align-items: center; gap: 12px; font-size: 17px; color: #CFCAC3; }
+  .sent .dot { width: 7px; height: 7px; border-radius: 999px; background: #C98A3E; display: inline-block; flex: none; }
+  .sent button {
+    appearance: none; background: none; border: 0; border-bottom: 1px solid rgba(255,255,255,0.28); padding: 12px 0;
+    font: inherit; font-size: 15px; font-weight: 500; color: #FFFFFF; cursor: pointer; min-height: 44px; transition: border-color .2s ease;
+  }
+  .sent button:hover { border-color: #C98A3E; }
 </style>
 </head>
 <body>
+<div class="stage">
+  <mesh-gradient class="bg-mesh" aria-hidden="true" speed="1.1"></mesh-gradient>
+  <div class="bg-tint" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
 
-<!-- NAV -->
-<nav id="rnav" style="position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 64px;display:flex;align-items:center;justify-content:space-between;transition:background 0.5s ease,border-bottom-color 0.5s ease;border-bottom:1px solid transparent">
-  <img id="rnavlogo" src="logos/schema52-A-dark.svg" alt="Schema 52" style="height:46px;width:auto;opacity:0;transition:opacity 0.7s ease">
-  <a id="rnav-cta" href="#rcta" style="font-size:10px;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;background:#ECE7DF;border:1px solid #ECE7DF;color:#0A0A0A;padding:11px 24px;border-radius:100px;opacity:0;transition:opacity 0.7s ease,background 0.25s ease,border-color 0.25s ease,color 0.25s ease">Book a Call</a>
-</nav>
+  <header class="masthead">
+    <a class="brand" href="/" aria-label="Schema 52 home">
+      <img src="logos/schema52-mark-white.svg" alt="Schema 52" width="26" height="30">
+    </a>
+    <nav>
+      <button type="button" class="link-btn" data-open-contact>Contact</button>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<section style="background:#000;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;position:relative;padding:0 24px">
-  <svg viewBox="0 0 243 277" xmlns="http://www.w3.org/2000/svg" style="width:auto;height:min(20vh,152px);display:block;overflow:visible;position:relative;z-index:2">
-    <g id="rstroke" stroke="#ECE7DF" stroke-linejoin="round" stroke-width="2.2">
-      <path id="rp1" d="M92.6487 113.132L122.879 131.038L234.502 65.9425L163.219 23.8403L81.3986 71.6359L71.252 65.1808L151.298 17.6758L121.644 0L9.43741 64.8869L81.9047 106.914L163.219 59.5159L173.648 65.9425L92.6487 113.132Z"></path>
-      <path id="rp2" d="M112.602 180.928V145.514L0 80.1171V163.702C0 163.702 77.5055 174.174 81.4499 210.681C81.9746 215.537 81.4499 223.188 81.4499 223.188L0 175.392V211.99L112.539 276.674L112.602 192.598L31.5724 145.514V134.266L112.602 180.928Z"></path>
-      <path id="rp3" d="M129.602 180.928V145.514L242.205 80.1171V163.702L160.755 210.681V223.188L242.205 175.392V211.99L129.665 276.674L129.602 192.598L210.632 145.514C210.632 145.514 211.116 138.632 210.632 134.266C206.608 97.9724 129.602 180.928 129.602 180.928Z"></path>
-    </g>
-    <g id="rfill">
-      <path d="M92.6487 113.132L122.879 131.038L234.502 65.9425L163.219 23.8403L81.3986 71.6359L71.252 65.1808L151.298 17.6758L121.644 0L9.43741 64.8869L81.9047 106.914L163.219 59.5159L173.648 65.9425L92.6487 113.132Z" fill="#ECE7DF"></path>
-      <path d="M112.602 180.928V145.514L0 80.1171V163.702C0 163.702 77.5055 174.174 81.4499 210.681C81.9746 215.537 81.4499 223.188 81.4499 223.188L0 175.392V211.99L112.539 276.674L112.602 192.598L31.5724 145.514V134.266L112.602 180.928Z" fill="#ECE7DF"></path>
-      <path d="M129.602 180.928V145.514L242.205 80.1171V163.702L160.755 210.681V223.188L242.205 175.392V211.99L129.665 276.674L129.602 192.598L210.632 145.514C210.632 145.514 211.116 138.632 210.632 134.266C206.608 97.9724 129.602 180.928 129.602 180.928Z" fill="#ECE7DF"></path>
-    </g>
-  </svg>
+  <main class="lede">
+    <div class="lede-scrim" aria-hidden="true"></div>
+    <h1>
+      <span class="l1">Your firm,</span>
+      <span class="l2">without the busywork.</span>
+    </h1>
+    <div class="rule" aria-hidden="true"></div>
+    <div class="body-col">
+      <div class="copy">
+        <p class="p-1">The best professional services will always be deeply human.</p>
+        <p class="p-2">We help exceptional firms stay that way.</p>
+        <p class="p-3">S52 builds private AI around your firm&rsquo;s expertise, data, and ways of working. Giving your people more time for judgment, advice, and the relationships that matter.</p>
+        <p class="p-4">We work with a limited number of firms. What we build is yours.</p>
+      </div>
+      <button type="button" class="cta" data-open-contact>
+        Get started <span class="arrow" aria-hidden="true">&rarr;</span>
+      </button>
+    </div>
+  </main>
 
-  <!-- Hero copy — revealed by JS after the mark resolves -->
-  <div id="rherocopy" style="opacity:0;transition:opacity 1.2s ease;position:relative;z-index:2;text-align:center;max-width:760px;margin-top:5vh">
-    <h1 id="rheroh1" class="rheroh1" style="font-size:clamp(28px,4vw,52px);font-weight:300;line-height:1.08;letter-spacing:-0.022em;color:#ECE7DF;text-wrap:balance">The operating partner behind your firm.</h1>
-    <p class="rherosub" style="font-size:clamp(14px,1.2vw,17px);font-weight:300;line-height:1.6;color:rgba(236,231,223,0.60);max-width:560px;margin:22px auto 0;text-wrap:pretty">S52 redesigns client operations with AI agents your team owns, so growth isn’t held back by operational bottlenecks.</p>
-    <a href="#rcta" id="rherocta" style="display:inline-flex;align-items:center;gap:12px;margin-top:36px;background:#ECE7DF;border:1px solid #ECE7DF;color:#0A0A0A;font-size:11px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;padding:15px 34px;border-radius:100px;transition:background 0.25s ease,color 0.25s ease,border-color 0.25s ease">Book a Call <span style="font-size:13px">→</span></a>
-  </div>
+  <footer class="colophon">
+    <p>Est. 2025</p>
+    <p style="white-space:nowrap;">&copy; 2026 Schema 52</p>
+  </footer>
+</div>
 
-  <!-- Warm bleed, injected by JS after mark resolves -->
-  <div id="rbleed" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 58%,rgba(201,138,62,0.065) 0%,transparent 62%);opacity:0;transition:opacity 2.4s ease;pointer-events:none;z-index:1"></div>
-  <!-- Scroll hint -->
-  <div id="rscrollhint" style="position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transition:opacity 0.6s ease;pointer-events:none;z-index:2">
-    <span style="font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(236,231,223,0.22)">Scroll</span>
-    <div style="position:relative;width:1px;height:44px;background:rgba(236,231,223,0.08);overflow:hidden">
-      <div id="rdrip" style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(201,138,62,0.6),transparent);transform:translateY(-110%)"></div>
+<div class="modal" id="contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" hidden>
+  <div class="modal-scrim" data-close-contact></div>
+  <div class="modal-card">
+    <div class="modal-head">
+      <p class="modal-title" id="contact-title">Connect with us</p>
+      <button type="button" class="modal-close" aria-label="Close" data-close-contact>&times;</button>
+    </div>
+
+    <form class="contact" id="contact-form" novalidate>
+      <div class="field-row">
+        <label class="field">Name
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label class="field">Firm
+          <input type="text" name="firm" required autocomplete="organization">
+        </label>
+      </div>
+      <label class="field">Email
+        <input type="email" name="email" required autocomplete="email">
+      </label>
+      <div class="form-actions">
+        <button type="submit" class="btn-send" id="contact-submit">
+          <span id="contact-submit-label">Send</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </button>
+        <button type="button" class="btn-cancel" data-close-contact>Cancel</button>
+      </div>
+      <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="sent" id="contact-sent" hidden>
+      <p role="status"><span class="dot" aria-hidden="true"></span> Thank you. We will be in touch shortly.</p>
+      <button type="button" data-close-contact>Close</button>
     </div>
   </div>
-</section>
+</div>
 
-<!-- MISSION -->
-<section style="background:#F3F2EF;box-shadow:inset 0 34px 46px -34px rgba(0,0,0,0.42)">
-  <div class="rmispad" style="padding:120px 64px 104px;text-align:center">
-
-    <h1 class="rmish1" style="font-size:clamp(46px,6vw,80px);font-weight:300;line-height:1.07;letter-spacing:-0.026em;color:#0A0A0A;text-wrap:pretty">Great people can only move<br>as fast as the systems around them.</h1>
-    <p class="rlead" style="font-size:clamp(17px,1.4vw,21px);font-weight:300;line-height:1.6;color:rgba(10,10,10,0.62);text-wrap:pretty;max-width:800px;margin:28px auto 0">S52 helps professional services firms capture the opportunities their teams are too busy to chase. We redesign the systems behind client work, turning the work around the work into more time for revenue, service, and growth.</p>
-
-  </div>
-</section>
-
-<!-- INDUSTRIES: full viewport width, no container -->
-<section style="background:#0A0A0A;box-shadow:inset 0 24px 40px -28px rgba(243,242,239,0.10)">
-  <div class="ripanels" style="display:grid;grid-template-columns:1fr 1fr 1fr;height:min(80vh,740px)">
-
-    <!-- Tax & Accounting -->
-    <div class="ripanel rreveal" data-delay="0" style="position:relative;overflow:hidden;cursor:default">
-      <div class="riphoto" style="position:absolute;inset:-6%;background-image:url('images/image_tax.png');background-size:cover;background-position:4% center;filter:brightness(0.72) saturate(0.7)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.86) 0%,rgba(0,0,0,0.42) 42%,transparent 78%);pointer-events:none"></div>
-      <div class="rivignette" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.28) 52%,transparent 72%);opacity:0;pointer-events:none"></div>
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px;text-shadow:0 1px 3px rgba(0,0,0,0.55)">
-        <p class="rilabel" style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(236,231,223,0.58);margin-bottom:11px">Tax &amp; Accounting</p>
-        <p class="ridiag" style="font-size:16px;font-weight:400;color:rgba(236,231,223,0.96);line-height:1.6;margin-bottom:15px;text-wrap:pretty">Most of the delay on a return happens before anyone starts it.</p>
-        <div class="ribreak" style="opacity:0;transform:translateY(8px)">
-          <ul>
-            <li>Chasing signed engagement letters and missing documents</li>
-            <li>PBC lists that stall work into extension season</li>
-            <li>Preparers waiting on inputs while review time disappears</li>
-          </ul>
-          <p class="rifoot">We build the intake and follow-up systems that keep work moving from first contact to final filing. At one firm, confirming fit up front saved the team <b>close to 300 hours</b>.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Legal -->
-    <div class="ripanel rreveal" data-delay="90" style="position:relative;overflow:hidden;cursor:default;border-left:1px solid rgba(0,0,0,0.5)">
-      <div class="riphoto" style="position:absolute;inset:-6%;background-image:url('images/image_legal.png');background-size:cover;background-position:72% 20%;filter:brightness(0.70) saturate(0.7)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.86) 0%,rgba(0,0,0,0.42) 42%,transparent 78%);pointer-events:none"></div>
-      <div class="rivignette" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.28) 52%,transparent 72%);opacity:0;pointer-events:none"></div>
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px;text-shadow:0 1px 3px rgba(0,0,0,0.55)">
-        <p class="rilabel" style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(236,231,223,0.58);margin-bottom:11px">Legal</p>
-        <p class="ridiag" style="font-size:16px;font-weight:400;color:rgba(236,231,223,0.96);line-height:1.6;margin-bottom:15px;text-wrap:pretty">A matter generates information long before it generates billable work.</p>
-        <div class="ribreak" style="opacity:0;transform:translateY(8px)">
-          <ul>
-            <li>Intake and conflicts checks that hold up the engagement letter</li>
-            <li>Associates billing hours to document collection</li>
-            <li>Client updates that slip because no one owns them</li>
-          </ul>
-          <p class="rifoot">We organize intake, files, and client communication so attorneys spend their time practicing law.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Financial Services -->
-    <div class="ripanel rreveal" data-delay="180" style="position:relative;overflow:hidden;cursor:default;border-left:1px solid rgba(0,0,0,0.5)">
-      <div class="riphoto" style="position:absolute;inset:-6%;background-image:url('images/image_finance.png');background-size:cover;background-position:center 35%;filter:brightness(0.72) saturate(0.7)"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.86) 0%,rgba(0,0,0,0.42) 42%,transparent 78%);pointer-events:none"></div>
-      <div class="rivignette" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.28) 52%,transparent 72%);opacity:0;pointer-events:none"></div>
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px 34px;text-shadow:0 1px 3px rgba(0,0,0,0.55)">
-        <p class="rilabel" style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(236,231,223,0.58);margin-bottom:11px">Financial Services</p>
-        <p class="ridiag" style="font-size:16px;font-weight:400;color:rgba(236,231,223,0.96);line-height:1.6;margin-bottom:15px;text-wrap:pretty">Clients judge the relationship on the work they never see.</p>
-        <div class="ribreak" style="opacity:0;transform:translateY(8px)">
-          <ul>
-            <li>Account opening that comes back not-in-good-order</li>
-            <li>Client reporting rebuilt by hand every cycle</li>
-            <li>Service requests routed through too many hands</li>
-          </ul>
-          <p class="rifoot">We modernize the systems behind onboarding, reporting, and ongoing service.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- HOW WE WORK: editorial -->
-<section style="background:#F3F2EF;box-shadow:inset 0 34px 46px -34px rgba(0,0,0,0.42)">
-  <div class="rpropad" style="max-width:960px;margin:0 auto;padding:112px 64px">
-
-    <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding-bottom:56px">
-      <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">01</p>
-      <div>
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><ellipse class="riconpath" cx="12" cy="12" rx="10" ry="6" style="stroke-dasharray:120;stroke-dashoffset:120"></ellipse><circle class="riconpath" cx="12" cy="12" r="3" style="stroke-dasharray:120;stroke-dashoffset:120"></circle></svg>
-        <h3 style="font-size:26px;font-weight:300;color:#0A0A0A;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Understand the operation.</h3>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(10,10,10,0.62);text-wrap:pretty">We map how work moves through your firm — from first inquiry to final deliverable — and find where it stalls. Before we build, we agree on the numbers that define success: turnaround, capacity, cost.</p>
-      </div>
-    </div>
-
-    <div style="height:1px;background:rgba(10,10,10,0.1)"></div>
-
-    <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding:56px 0">
-      <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">02</p>
-      <div>
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><circle class="riconpath" cx="12" cy="12" r="8" style="stroke-dasharray:120;stroke-dashoffset:120"></circle><circle class="riconpath" cx="12" cy="12" r="2" style="stroke-dasharray:120;stroke-dashoffset:120"></circle><line class="riconpath" x1="12" y1="2" x2="12" y2="7" style="stroke-dasharray:120;stroke-dashoffset:120"></line><line class="riconpath" x1="12" y1="17" x2="12" y2="22" style="stroke-dasharray:120;stroke-dashoffset:120"></line><line class="riconpath" x1="2" y1="12" x2="7" y2="12" style="stroke-dasharray:120;stroke-dashoffset:120"></line><line class="riconpath" x1="17" y1="12" x2="22" y2="12" style="stroke-dasharray:120;stroke-dashoffset:120"></line></svg>
-        <h3 style="font-size:26px;font-weight:300;color:#0A0A0A;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Find the leverage.</h3>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(10,10,10,0.62);text-wrap:pretty">In most firms, one or two bottlenecks create the majority of the drag. We fix those first. That focus is why the work tends to pay off in days, not quarters.</p>
-      </div>
-    </div>
-
-    <div style="height:1px;background:rgba(10,10,10,0.1)"></div>
-
-    <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding:56px 0">
-      <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">03</p>
-      <div>
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><rect class="riconpath" x="2" y="8" width="13" height="8" rx="1" style="stroke-dasharray:120;stroke-dashoffset:120"></rect><line class="riconpath" x1="15" y1="12" x2="22" y2="12" style="stroke-dasharray:120;stroke-dashoffset:120"></line><polyline class="riconpath" points="19,9 22,12 19,15" style="stroke-dasharray:120;stroke-dashoffset:120"></polyline></svg>
-        <h3 style="font-size:26px;font-weight:300;color:#0A0A0A;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Build it to last.</h3>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(10,10,10,0.62);text-wrap:pretty">What we build belongs to your firm. No subscription to outgrow, no standing dependency on us. We hand it over complete, and it keeps running long after we've gone.</p>
-      </div>
-    </div>
-
-    <div style="height:1px;background:rgba(10,10,10,0.1)"></div>
-
-    <div class="rprostep" style="display:grid;grid-template-columns:64px 1fr;gap:48px;padding-top:56px">
-      <p style="font-size:13px;letter-spacing:0.14em;color:#C98A3E;padding-top:4px">04</p>
-      <div>
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" class="ricon" style="color:rgba(201,138,62,0.72);margin-bottom:26px;display:block"><path class="riconpath" d="M8,4 A8,8 0 1,0 20,12" style="stroke-dasharray:120;stroke-dashoffset:120"></path><polyline class="riconpath" points="16,8 20,12 16,16" style="stroke-dasharray:120;stroke-dashoffset:120"></polyline></svg>
-        <h3 style="font-size:26px;font-weight:300;color:#0A0A0A;line-height:1.18;margin-bottom:20px;letter-spacing:-0.015em">Stay in it with you.</h3>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:rgba(10,10,10,0.62);text-wrap:pretty">We don't hand off and vanish. We hold the work to the benchmarks we set, tune it as your firm changes, and stay close as new work comes in. That's the difference between a partner and a vendor.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="rcta" style="background:#0A0A0A;box-shadow:inset 0 24px 40px -28px rgba(243,242,239,0.10)">
-  <div class="rctapad" style="max-width:1280px;margin:0 auto;padding:120px 64px 104px">
-    <div class="rctainner" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:44px">
-
-      <!-- Credentials -->
-      <div class="rreveal" style="width:100%;max-width:760px">
-        <p style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(236,231,223,0.4);margin-bottom:24px">Built by operators from</p>
-        <div id="rcredlogos" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
-          <img src="logos/techstars.png" alt="Techstars" style="height:22px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
-          <img src="logos/shell.png" alt="Shell" style="height:28px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
-          <img src="logos/accenture.png" alt="Accenture" style="height:20px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
-          <img src="logos/bain.png" alt="Bain" style="height:16px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
-          <img src="logos/gartner.png" alt="Gartner" style="height:16px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
-          <img src="logos/deloitte.svg" alt="Deloitte" style="height:15px;width:auto;filter:brightness(0) invert(1);opacity:0.5;flex-shrink:0">
-        </div>
-      </div>
-
-      <div style="max-width:760px">
-        <h2 class="rctah2" style="font-size:clamp(34px,4.4vw,58px);font-weight:300;line-height:1.12;letter-spacing:-0.022em;color:#ECE7DF;text-wrap:pretty">Your firm,<br>without the busywork.</h2>
-      </div>
-
-      <div class="rctaform rreveal" data-delay="120" style="width:100%;max-width:460px">
-        <p class="rlead" style="font-size:clamp(17px,1.4vw,21px);font-weight:300;line-height:1.6;color:rgba(236,231,223,0.6);margin-bottom:28px;text-wrap:pretty">Let’s show you where your team gets time back.</p>
-        <form id="rform" style="display:flex;flex-direction:column;gap:8px">
-          <div id="rformrow" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-            <input type="text" name="name" placeholder="Name" autocomplete="name" required>
-            <input type="email" name="email" placeholder="Work email" autocomplete="email" required>
-          </div>
-          <input type="text" name="company" placeholder="Company" autocomplete="organization">
-          <textarea name="message" placeholder="How can we help?" rows="3" style="width:100%;background:rgba(236,231,223,0.05);border:1px solid rgba(236,231,223,0.20);border-radius:12px;color:#ECE7DF;font-family:'Inter','Helvetica Neue',sans-serif;font-size:14px;font-weight:300;padding:14px 16px;outline:none;transition:border-color 0.25s ease;resize:none;-webkit-appearance:none"></textarea>
-          <button id="rsubmit" type="submit" style="display:flex;align-items:center;justify-content:center;gap:12px;background:#ECE7DF;color:#0A0A0A;border:1px solid #ECE7DF;font-size:10px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;padding:16px 32px;border-radius:100px;cursor:pointer;font-family:'Inter','Helvetica Neue',sans-serif;margin-top:6px"><span id="rsubmit-label">Book a Call</span> <span id="rsubmit-arrow" style="font-size:13px">→</span></button>
-          <p id="rform-status" style="font-size:12px;font-weight:300;color:rgba(236,231,223,0.6);min-height:16px"></p>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer style="background:#0A0A0A">
-  <div style="max-width:1280px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(236,231,223,0.12),transparent)"></div>
-  <div class="rfooterrow rreveal" style="max-width:1280px;margin:0 auto;padding:32px 64px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
-    <img src="logos/schema52-A-dark.svg" alt="Schema 52" style="height:32px;width:auto;opacity:0.58;flex-shrink:0">
-    <p style="font-size:10px;font-weight:300;color:rgba(236,231,223,0.48);letter-spacing:0.05em;white-space:nowrap;flex-shrink:0">© 2026 SCHEMA 52</p>
-  </div>
-</footer>
-
+<script src="mesh-gradient.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const E = id => document.getElementById(id);
-  const Q = s  => document.querySelectorAll(s);
-  const ease = 'cubic-bezier(0.16,1,0.3,1)';
+(function () {
+  // Google Apps Script Web App endpoint — shared S52 contact backend.
+  // Source: google-apps-script/Code.gs. Logs to the "Submissions" sheet and emails NOTIFY_TO.
+  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbweWJT6wmE9-FucgJpChIwrO6QklnO7_zB4OajcP3cKGhtdkZgmftHgfTdAHruDOZbm2g/exec';
 
-  // ── MARK ANIMATION ────────────────────────────────────────────────────────
-  if (!E('ranim')) {
-    const s = document.createElement('style');
-    s.id = 'ranim';
-    s.textContent = [
-      '#rp1{animation:rtrace 1.5s cubic-bezier(0.4,0,0.2,1) 0.2s forwards}',
-      '#rp2{animation:rtrace 1.7s cubic-bezier(0.4,0,0.2,1) 0.5s forwards}',
-      '#rp3{animation:rtrace 1.7s cubic-bezier(0.4,0,0.2,1) 0.5s forwards}',
-      '#rfill{animation:rfi 1.0s ease 1.9s forwards}',
-      '#rstroke{animation:rfo 1.0s ease 1.9s forwards}',
-      '#rscrollhint{animation:rfi 1.0s ease 3.8s forwards}',
-      '#rdrip{animation:rdrip 2.0s ease-in-out 4.4s infinite}',
-    ].join('');
-    document.head.appendChild(s);
+  var modal   = document.getElementById('contact');
+  var form    = document.getElementById('contact-form');
+  var sent    = document.getElementById('contact-sent');
+  var status  = document.getElementById('contact-status');
+  var submit  = document.getElementById('contact-submit');
+  var label   = document.getElementById('contact-submit-label');
+  var lastFocus = null;
+
+  function openContact() {
+    lastFocus = document.activeElement;
+    form.hidden = false;
+    sent.hidden = true;
+    status.textContent = '';
+    modal.hidden = false;
+    requestAnimationFrame(function () {
+      var el = form.querySelector('input[name="name"]');
+      if (el) el.focus();
+    });
   }
-  setTimeout(() => { const b = E('rbleed'); if (b) b.style.opacity = '1'; }, 2000);
-
-  // ── WORD SPLIT HELPER ─────────────────────────────────────────────────────
-  const splitWords = el => {
-    if (!el) return;
-    const raw = el.innerHTML.replace(/<br\s*\/?>/gi, ' __BR__ ');
-    el.innerHTML = raw.split(/\s+/).map((w, i) => {
-      if (w === '__BR__') return '<br>';
-      return `<span class="rword" style="transition-delay:${i * 0.055}s">${w}</span>`;
-    }).join(' ');
-  };
-
-  // ── HERO COPY REVEAL (after mark resolves ~2.9s) ─────────────────────────
-  const heroCopy = E('rherocopy');
-  const heroH1   = E('rheroh1');
-  splitWords(heroH1);
-  setTimeout(() => {
-    if (heroCopy) heroCopy.style.opacity = '1';
-    if (heroH1) [...heroH1.querySelectorAll('.rword')].forEach((w, i) =>
-      setTimeout(() => w.classList.add('in'), i * 55)
-    );
-  }, 2600);
-
-  // ── MISSION WORD REVEAL ───────────────────────────────────────────────────
-  const misSec = document.querySelector('section[style*="background:#F3F2EF"]');
-  const misH1  = misSec ? misSec.querySelector('h1.rmish1') : null;
-  const misP   = misSec ? misSec.querySelector('p.rmish1')  : null;
-  splitWords(misH1);
-  splitWords(misP);
-
-  if (misSec) {
-    const mObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const h1Words = misH1 ? [...misH1.querySelectorAll('.rword')] : [];
-        const pWords  = misP  ? [...misP.querySelectorAll('.rword')]  : [];
-        h1Words.forEach((w, i) => setTimeout(() => w.classList.add('in'), i * 58));
-        const pDelay = h1Words.length * 52 + 160;
-        pWords.forEach((w, i)  => setTimeout(() => w.classList.add('in'), pDelay + i * 52));
-        mObs.unobserve(e.target);
-      });
-    }, { threshold: 0.05 });
-    mObs.observe(misSec);
+  function closeContact() {
+    modal.hidden = true;
+    form.reset();
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
-  // ── CTA HEADLINE WORD REVEAL ──────────────────────────────────────────────
-  const ctaH2 = document.querySelector('#rcta h2');
-  if (ctaH2) {
-    splitWords(ctaH2);
-    const cObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        [...e.target.querySelectorAll('.rword')].forEach((w, i) =>
-          setTimeout(() => w.classList.add('in'), i * 60)
-        );
-        cObs.unobserve(e.target);
-      });
-    }, { threshold: 0.1 });
-    cObs.observe(ctaH2);
-  }
-
-  // ── PROCESS STEPS: STAGGER + ICON STROKE-DRAW ────────────────────────────
-  Q('.rprostep').forEach((step, idx) => {
-    step.style.opacity   = '0';
-    step.style.transform = 'translateY(20px)';
-    step.style.transition = `opacity 0.9s ${ease}, transform 0.9s ${ease}`;
-
-    const iconPaths = [...step.querySelectorAll('.riconpath')];
-
-    const sObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        step.style.opacity   = '1';
-        step.style.transform = 'none';
-        iconPaths.forEach((path, pi) => {
-          setTimeout(() => { path.style.strokeDashoffset = '0'; }, 400 + pi * 160);
-        });
-        sObs.unobserve(e.target);
-      });
-    }, { threshold: 0.18 });
-    sObs.observe(step);
+  document.querySelectorAll('[data-open-contact]').forEach(function (b) {
+    b.addEventListener('click', openContact);
+  });
+  document.querySelectorAll('[data-close-contact]').forEach(function (b) {
+    b.addEventListener('click', closeContact);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) closeContact();
   });
 
-  // ── UNIFIED SECTION REVEAL ────────────────────────────────────────────────
-  Q('.rreveal').forEach(el => {
-    const delay = parseFloat(el.dataset.delay || '0');
-    el.style.opacity   = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = `opacity 0.9s ${ease} ${delay}ms, transform 0.9s ${ease} ${delay}ms`;
-    const rObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        el.style.opacity   = '1';
-        el.style.transform = 'none';
-        rObs.unobserve(e.target);
-      });
-    }, { threshold: 0.12 });
-    rObs.observe(el);
-  });
-
-  // ── INDUSTRY HOVER + PARALLAX ─────────────────────────────────────────────
-  const indPanels = [];
-  Q('.ripanel').forEach(panel => {
-    const photo    = panel.querySelector('.riphoto');
-    const vignette = panel.querySelector('.rivignette');
-    const breaks   = panel.querySelector('.ribreak');
-    const label    = panel.querySelector('.rilabel');
-    const state    = { hovered: false, py: 0 };
-    indPanels.push({ panel, photo, state });
-
-    const applyT = () => {
-      if (photo) photo.style.transform = `translateY(${state.py}px) scale(${state.hovered ? 1.03 : 1.0})`;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      company: form.firm.value.trim(),
+      message: ''
     };
-    panel.addEventListener('mouseenter', () => {
-      state.hovered = true; applyT();
-      if (vignette) vignette.style.opacity = '1';
-      if (breaks)   { breaks.style.opacity = '1'; breaks.style.transform = 'translateY(0)'; }
-      if (label)    label.style.color = 'rgba(236,231,223,0.88)';
-    });
-    panel.addEventListener('mouseleave', () => {
-      state.hovered = false; applyT();
-      if (vignette) vignette.style.opacity = '0';
-      if (breaks)   { breaks.style.opacity = '0'; breaks.style.transform = 'translateY(8px)'; }
-      if (label)    label.style.color = 'rgba(236,231,223,0.58)';
-    });
-  });
-
-  // ── SCROLL ────────────────────────────────────────────────────────────────
-  window.addEventListener('scroll', () => {
-    const y      = window.scrollY;
-    const nav    = E('rnav');
-    const logo   = E('rnavlogo');
-    const navCta = E('rnav-cta');
-    const hint   = E('rscrollhint');
-
-    if (y > 60) {
-      nav.style.background            = 'rgba(0,0,0,0.55)';
-      nav.style.backdropFilter        = 'blur(16px) saturate(1.2)';
-      nav.style.webkitBackdropFilter  = 'blur(16px) saturate(1.2)';
-      nav.style.borderBottomColor     = 'rgba(236,231,223,0.05)';
-      if (logo)   logo.style.opacity   = '1';
-      if (navCta) navCta.style.opacity = '1';
-    } else {
-      nav.style.background            = 'transparent';
-      nav.style.backdropFilter        = 'none';
-      nav.style.webkitBackdropFilter  = 'none';
-      nav.style.borderBottomColor     = 'transparent';
-      if (logo)   logo.style.opacity   = '0';
-      if (navCta) navCta.style.opacity = '0';
+    if (!data.name || !data.company || !data.email) {
+      status.textContent = 'Please fill in your name, firm, and email.';
+      return;
     }
-    if (hint) hint.style.opacity = y > 60 ? '0' : null;
+    submit.disabled = true;
+    label.textContent = 'Sending…';
+    status.textContent = '';
 
-    indPanels.forEach(({ panel, photo, state }) => {
-      const rect = panel.getBoundingClientRect();
-      state.py = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.028;
-      if (photo) photo.style.transform = `translateY(${state.py}px) scale(${state.hovered ? 1.03 : 1.0})`;
-    });
-  }, { passive: true });
-
-  // ── FORM FOCUS LINE ───────────────────────────────────────────────────────
-  Q('#rform input, #rform textarea').forEach(field => {
-    const wrap = document.createElement('div');
-    wrap.style.cssText = 'position:relative';
-    field.parentNode.insertBefore(wrap, field);
-    wrap.appendChild(field);
-    const line = document.createElement('div');
-    line.style.cssText = 'position:absolute;bottom:0;left:0;height:1px;width:0;background:#C98A3E;opacity:0.55;transition:width 0.3s cubic-bezier(0,0,0.2,1);pointer-events:none';
-    wrap.appendChild(line);
-    field.addEventListener('focus', () => { line.style.width = '100%'; });
-    field.addEventListener('blur',  () => { line.style.width = '0'; });
-  });
-
-  // ── FORM SUBMIT ───────────────────────────────────────────────────────────
-  // Google Apps Script Web App URL. See google-apps-script/Code.gs for setup.
-  const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbweWJT6wmE9-FucgJpChIwrO6QklnO7_zB4OajcP3cKGhtdkZgmftHgfTdAHruDOZbm2g/exec';
-
-  const form   = E('rform');
-  const status = E('rform-status');
-  const submit = E('rsubmit');
-  const label  = E('rsubmit-label');
-
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = {
-        name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        company: form.company.value.trim(),
-        message: form.message.value.trim(),
-      };
-      if (!data.name || !data.email) {
-        status.textContent = 'Please fill in your name and email.';
-        return;
-      }
-      submit.disabled = true;
-      label.textContent = 'Sending…';
-      status.textContent = '';
-      try {
-        // Content-Type text/plain avoids a CORS preflight, which Apps Script doesn't handle.
-        const res = await fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(data),
-        });
-        const result = await res.json();
-        if (!res.ok || result.error) throw new Error(result.error || 'Request failed');
-        label.textContent = 'Sent';
-        status.textContent = "Thanks, we'll be in touch shortly.";
-        form.reset();
-        Q('#rform input, #rform textarea').forEach(f => f.blur());
-      } catch (err) {
+    // Content-Type text/plain avoids a CORS preflight, which Apps Script doesn't handle.
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data)
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (result) {
+        if (result && result.error) throw new Error(result.error);
+        form.hidden = true;
+        sent.hidden = false;
+      })
+      .catch(function () {
         submit.disabled = false;
-        label.textContent = 'Book a Call';
-        status.textContent = 'Something went wrong. Please try again or email us directly.';
-      }
-    });
-  }
-});
+        label.textContent = 'Send';
+        status.textContent = 'Something went wrong. Please try again, or email hello@schema52.com.';
+      });
+  });
+})();
 </script>
 </body>
 </html>
