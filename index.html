@@ -146,9 +146,17 @@
     padding: 11px 2px;
     transition: opacity .25s ease;
   }
-  .cta-aside:hover, .cta-aside:active { color: #FFFFFF; opacity: 1; }
   .cta-aside .arrow { color: inherit; display: inline-block; transition: transform .3s cubic-bezier(.2,.7,.25,1); }
-  .cta-aside:hover .arrow, .cta-aside:active .arrow { transform: translate(2px, -2px); }
+  /* Touch has no hover, and the global -webkit-tap-highlight-color:transparent
+     removes the platform tap flash, so :active carries the feedback there. */
+  .cta-aside:active { color: #FFFFFF; opacity: 1; }
+  .cta-aside:active .arrow { transform: translate(2px, -2px); }
+  /* Pointer-only: an unguarded :hover latches on touch and would leave the link
+     stranded at full opacity after the tap, since it opens in a new tab. */
+  @media (hover: hover) and (pointer: fine) {
+    .cta-aside:hover { color: #FFFFFF; opacity: 1; }
+    .cta-aside:hover .arrow { transform: translate(2px, -2px); }
+  }
 
   .colophon { position: relative; z-index: 2; display: flex; flex-wrap: wrap; align-items: baseline;
     justify-content: space-between; gap: 8px 28px; padding-top: clamp(16px, 2.4vh, 28px);
