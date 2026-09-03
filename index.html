@@ -146,16 +146,25 @@
     padding: 11px 2px;
     transition: opacity .25s ease;
   }
-  .cta-aside .arrow { color: inherit; display: inline-block; transition: transform .3s cubic-bezier(.2,.7,.25,1); }
+  /* The same glyph the primary uses, rotated to point out and away. Rotating
+     &rarr; rather than setting &#8599; is deliberate: U+2197 carries emoji
+     presentation and iOS renders it as a colour emoji, which breaks both the
+     muted treatment and the type match. */
+  .cta-aside .arrow { color: inherit; display: inline-block;
+    transform: rotate(-45deg);
+    transition: transform .3s cubic-bezier(.2,.7,.25,1); }
   /* Touch has no hover, and the global -webkit-tap-highlight-color:transparent
      removes the platform tap flash, so :active carries the feedback there. */
   .cta-aside:active { color: #FFFFFF; opacity: 1; }
-  .cta-aside:active .arrow { transform: translate(2px, -2px); }
-  /* Pointer-only: an unguarded :hover latches on touch and would leave the link
-     stranded at full opacity after the tap, since it opens in a new tab. */
+  .cta-aside:active .arrow { transform: translate(2px, -2px) rotate(-45deg); }
+  /* :hover latches on touch and stays applied after the tap, and this link
+     leaves the page, so the user returns to whatever it left behind. Keep the
+     colour override unconditional -- without it the global a:hover accent
+     strands the link orange -- and gate only the reveal to real pointers. */
+  .cta-aside:hover { color: #FFFFFF; }
   @media (hover: hover) and (pointer: fine) {
-    .cta-aside:hover { color: #FFFFFF; opacity: 1; }
-    .cta-aside:hover .arrow { transform: translate(2px, -2px); }
+    .cta-aside:hover { opacity: 1; }
+    .cta-aside:hover .arrow { transform: translate(2px, -2px) rotate(-45deg); }
   }
 
   /* Both controls render ~40px tall, short of the 44px minimum touch target.
@@ -262,7 +271,7 @@
           Work with us <span class="arrow" aria-hidden="true">&rarr;</span>
         </button>
         <a class="cta-aside" href="https://meetagentzoe.com" target="_blank" rel="noopener">
-          Meet Zoe <span class="arrow" aria-hidden="true">&#8599;</span>
+          Meet Zoe <span class="arrow" aria-hidden="true">&rarr;</span>
         </a>
       </div>
     </div>
