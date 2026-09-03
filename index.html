@@ -132,6 +132,24 @@
   .cta:hover, .cta:active { border-color: #C98A3E; }
   .cta:hover .arrow, .cta:active .arrow { transform: translateX(6px); }
 
+  /* Secondary text link sitting beside the CTA. Same type as .cta, quieter by
+     opacity alone, and deliberately set apart — no bottom rule, that stays
+     exclusive to the primary. */
+  .cta-row { display: flex; flex-wrap: wrap; align-items: baseline;
+    gap: 8px clamp(36px, 4.5vw, 56px); }
+
+  .cta-aside {
+    font-family: inherit; font-size: clamp(14px, 0.9vw, 15px);
+    font-weight: 500; letter-spacing: 0.01em;
+    color: #FFFFFF; opacity: 0.6; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 11px 2px;
+    transition: opacity .25s ease;
+  }
+  .cta-aside:hover, .cta-aside:active { color: #FFFFFF; opacity: 1; }
+  .cta-aside .arrow { color: inherit; display: inline-block; transition: transform .3s cubic-bezier(.2,.7,.25,1); }
+  .cta-aside:hover .arrow, .cta-aside:active .arrow { transform: translate(2px, -2px); }
+
   .colophon { position: relative; z-index: 2; display: flex; flex-wrap: wrap; align-items: baseline;
     justify-content: space-between; gap: 8px 28px; padding-top: clamp(16px, 2.4vh, 28px);
     font-size: 10px; font-weight: 400; line-height: 1.5; letter-spacing: 0.07em; color: rgba(240,236,229,0.34); }
@@ -220,9 +238,14 @@
         <p class="p-3">S52 builds private AI around your firm&rsquo;s expertise, data, and ways of working, giving your people more time for judgment, advice, and relationships.</p>
         <p class="p-4">We work with a limited number of firms. What we build is yours.</p>
       </div>
-      <button type="button" class="cta" data-open-contact>
-        Work with us <span class="arrow" aria-hidden="true">&rarr;</span>
-      </button>
+      <div class="cta-row">
+        <button type="button" class="cta" data-open-contact>
+          Work with us <span class="arrow" aria-hidden="true">&rarr;</span>
+        </button>
+        <a class="cta-aside" href="https://meetagentzoe.com" target="_blank" rel="noopener">
+          Meet Zoe <span class="arrow" aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
     </div>
   </main>
 
