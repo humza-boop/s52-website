@@ -158,6 +158,17 @@
     .cta-aside:hover .arrow { transform: translate(2px, -2px); }
   }
 
+  /* Both controls render ~40px tall, short of the 44px minimum touch target.
+     Expand the hit area with an out-of-flow overlay rather than padding: extra
+     padding would push the primary's bottom rule away from its text and grow
+     the row, and neither should move. Vertical only — the two are 36px apart at
+     their closest, and each is already wider than 44px. */
+  .cta, .cta-aside { position: relative; }
+  .cta::after, .cta-aside::after {
+    content: ''; position: absolute; left: 0; right: 0;
+    top: 50%; transform: translateY(-50%); height: 44px;
+  }
+
   .colophon { position: relative; z-index: 2; display: flex; flex-wrap: wrap; align-items: baseline;
     justify-content: space-between; gap: 8px 28px; padding-top: clamp(16px, 2.4vh, 28px);
     font-size: 10px; font-weight: 400; line-height: 1.5; letter-spacing: 0.07em; color: rgba(240,236,229,0.34); }
