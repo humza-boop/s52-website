@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#181A1C">
+<meta name="theme-color" content="#1B1C22">
 <title>S52 | AI-Native Professional Services</title>
 <meta name="description" content="S52 builds private AI around your firm's expertise, data, and ways of working — giving your people more time for judgment, advice, and the relationships that matter.">
 
@@ -45,9 +45,11 @@
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
   /* Safari uses the document background as browser-chrome fallback on newer
-     iOS versions. Keep it aligned with theme-color so its UI blends into the
-     page instead of producing pure-black bands around the visual viewport. */
-  html, body { margin: 0; padding: 0; min-height: 100%; background: #181A1C; }
+     iOS versions. This must equal theme-color AND the .backdrop base, or the
+     safe areas paint a darker band than the gradient above them. Measured off
+     an iPhone 16 Pro: the composited mesh renders #191C23 at its top edge and
+     #1C1B20 at its bottom, so all three blacks are pinned to that tone. */
+  html, body { margin: 0; padding: 0; min-height: 100%; background: #1B1C22; }
   body { color: #FFFFFF; font-family: var(--text); -webkit-font-smoothing: antialiased; overscroll-behavior: none; }
   a { color: #FFFFFF; text-decoration: none; }
   a:hover { color: #C98A3E; }
@@ -68,7 +70,11 @@
 
   /* Background layers cover the whole visual viewport (behind iOS toolbars and
      safe areas) — kept fixed so retracting toolbars never expose a bare edge. */
-  .backdrop { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; background: #0A0806; }
+  /* Base coat behind the mesh. It is what shows through in the safe areas, so
+     it runs top-edge tone to bottom-edge tone rather than a flat near-black --
+     a single #0A0806 was what read as black bars around the iOS chrome. */
+  .backdrop { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    background: linear-gradient(180deg, #191C23 0%, #1B1C22 50%, #1C1B20 100%); }
   .bg-mesh { position: absolute !important; inset: 0; pointer-events: none; animation: s52halo 1.4s ease-out both .1s; }
   .bg-tint { position: absolute; inset: 0; pointer-events: none;
     background: linear-gradient(180deg, rgba(16,22,30,0.40) 0%, rgba(16,22,30,0.10) 42%, rgba(14,20,28,0.46) 100%); }
