@@ -244,6 +244,33 @@
     font: inherit; font-size: 15px; font-weight: 500; color: #FFFFFF; cursor: pointer; min-height: 44px; transition: border-color .2s ease;
   }
   .sent button:hover { border-color: #C98A3E; }
+
+  /* Phone-sized modal. Below ~560px the card stops being pinned to its 520px
+     max-width and goes fluid, so this is where it should stop reading as a
+     shrunken desktop form: tighter vertical rhythm, narrower gutter-to-card
+     ratio, same border, gradient and field order. Touch minimums (44px on the
+     close, send, cancel and sent buttons) are deliberately left alone. */
+  @media (max-width: 560px) {
+    /* Horizontal gutter scales so the card holds ~89vw on every phone width;
+       a fixed gutter drifts to 91vw+ on the larger handsets. */
+    .modal { padding: 20px 5.4vw; }
+    .modal-card { padding: 19px 22px; }
+    .modal-head { margin-bottom: 12px; gap: 16px; }
+    .modal-title { font-size: 18px; }
+
+    form.contact { gap: 11px; }
+    .field-row { gap: 12px; }
+    .field { gap: 4px; }
+    /* 40px tall; with its label the whole <label> is a ~58px tap area.
+       16px font stays — anything smaller and iOS Safari zooms on focus. */
+    .field input { padding: 10px 0; }
+    .form-actions { padding-top: 0; }
+    /* min-height still reserves the error line so the card can't jump. */
+    .form-status { margin-top: 2px; font-size: 12px; min-height: 1.1em; }
+
+    .sent { gap: 14px; }
+    .sent p { font-size: 16px; }
+  }
 </style>
 </head>
 <body>
@@ -292,7 +319,7 @@
   <div class="modal-scrim" data-close-contact></div>
   <div class="modal-card">
     <div class="modal-head">
-      <p class="modal-title" id="contact-title">Connect with us</p>
+      <p class="modal-title" id="contact-title">Work with us</p>
       <button type="button" class="modal-close" aria-label="Close" data-close-contact>&times;</button>
     </div>
 
